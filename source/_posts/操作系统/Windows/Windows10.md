@@ -2,7 +2,7 @@
 title: "Windows 10 学习日志"
 excerpt: "学习过程中使用 Windows 10 的一些经验"
 categories:
-- Tips
+- 技巧
 tags:
 - Windows
 date: 2020-06-14

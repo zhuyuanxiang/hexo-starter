@@ -2,7 +2,7 @@
 title: "Ubuntu Remote Services"
 excerpt: "Ubuntu"
 categories:
-- OS
+- Ubuntu
 tags:
 - Ubuntu
 - SSHD
@@ -63,18 +63,18 @@ service ssh restart
     3. 文件权限：`chmod 600 authorized_keys`
 3. 编辑配置文件：`/etc/ssh/sshd_config`
 
-```text
-RSAAuthentication yes
-PubkeyAuthentication yes
-# 允许 root 用户登录
-PermitRootLogin yes
-# 禁止密码登录
-PasswordAuthentication no
-```
+    ```text
+    RSAAuthentication yes
+    PubkeyAuthentication yes
+    # 允许 root 用户登录
+    PermitRootLogin yes
+    # 禁止密码登录
+    PasswordAuthentication no
+    ```
 
 4. 重启SSH服务：`service sshd restart`
 5. 将私钥文件下载到客户端
-  1. VSCode 直接访问 `~/.ssh/`目录
+6. VSCode 直接访问 `~/.ssh/`目录
 
 ## Vino-Serv
 

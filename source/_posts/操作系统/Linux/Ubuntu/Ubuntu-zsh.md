@@ -2,7 +2,7 @@
 title: "Ubuntu的ZSH安装说明"
 excerpt: "Ubuntu"
 categories:
-- OS
+- Ubuntu
 tags:
 - Ubuntu
 - ZSH

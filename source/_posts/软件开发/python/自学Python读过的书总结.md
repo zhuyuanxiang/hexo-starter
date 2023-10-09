@@ -2,11 +2,11 @@
 title: "自学 Python 读过的书总结"
 excerpt: "个人的感受，非理性的认知"
 categories:
-- Reading
+- 阅读
 tags:
 - Python
-- Sentiment
-- Conclusion
+- 感受
+- 结论
 date: 2019-02-18
 updated: 2019-03-08
 toc: true

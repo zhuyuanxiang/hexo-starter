@@ -2,7 +2,7 @@
 title: "Ubuntu 学习日志"
 excerpt: "Ubuntu"
 categories:
-- OS
+- Ubuntu
 tags:
 - Ubuntu
 - Python
