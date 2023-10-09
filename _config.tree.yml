@@ -23,11 +23,11 @@ links:
   # 普通链接，可配置多个，以下是示例
   custom:
   - name: Weibo
-      URL: https://weibo.com/ygpfr
+    URL: https://weibo.com/ygpfr
   - name: Douban
-      URL: https://www.douban.com/people/zhuyuanxiang/
+    URL: https://www.douban.com/people/zhuyuanxiang/
   - name: E-Mail
-      URL: mailto:zhuyuanxiang@gmail.com
+    URL: mailto:zhuyuanxiang@gmail.com
 
 
 # 可选, giscus 评论系统
