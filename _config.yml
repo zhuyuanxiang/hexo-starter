@@ -3,18 +3,23 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: John Doe
-language: en
-timezone: ''
+title: zYx.Tom的个人博客
+subtitle: 集社牛与社恐与一身
+description: 湖南大学92级本科，浙江大学99级硕士，电子科技大学09级博士。具备2D图像、3D图形方面的AI研究和产品落地能力。
+keywords: 工作笔记, 图像处理, 图形处理, Python, PyTorch, Ubuntu, Git, 开发工具, AI, 人工智能, 神经网络
+author: ZhuYuanxiang
+language: 
+  - zh-CN
+  - en
+language_switcher: true
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
-permalink: :year/:month/:day/:title/
+url: http://zhuyuanxiang.github.io/
+root:
+# permalink: :year/:month/:day/:title/
+permalink: /:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -97,9 +102,12 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  # repo: https://github.com/zhuyuanxiang/zhuyuanxiang.github.io
+  repo: https://gitee.com/zhuyuanxiang/zhuyuanxiang.gitee.io
+  branch: master
