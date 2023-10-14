@@ -20,17 +20,17 @@ toc_sticky: true
 导入数据时，不断报出主键重复的错误，可能的原因：
 
 1. 旧表中的索引并没有从系统中删除，导致导入的新表与旧表中的索引记录冲突
-2. 数据库中旧表曾经使用过与新表相同的名称，然后旧表改名后，索引名称未能正确修改，导致旧表与新表的索引冲突
+1. 数据库中旧表曾经使用过与新表相同的名称，然后旧表改名后，索引名称未能正确修改，导致旧表与新表的索引冲突
 
 解决方案：
 
 1. 重新建立一个数据库，导入数据不会再出现这种问题
-2. 重新建立一个新的数据表，表的名字是以前没有使用过的，导入数据不会再出现这种问题，然后再把表改回自己需要的表名即可。
+1. 重新建立一个新的数据表，表的名字是以前没有使用过的，导入数据不会再出现这种问题，然后再把表改回自己需要的表名即可。
 
 ### timezone
 
 - MySQL 8.0 加入对 UTC 支持后，连接会出错，可以使用 Custom 方式输入连接串，在连接串的最后加入 `?serverTimezone=UTC` 即可
-  - 完整连接串：`jdbc: mysql://localhost:3306/mysql?serverTimezone=UTC`
+    - 完整连接串：`jdbc: mysql://localhost:3306/mysql?serverTimezone=UTC`
 
 ### 1206
 
@@ -113,11 +113,11 @@ OPTIMIZE TABLE cick_log_all;
 以上方法对于不同的表格式效果不同
 
 - 对于 MyISAM，`OPTIMIZE TABLE` 的作用
-  - 如果表中的行被删除或者拆分过，则修复这张表
-  - 对于没有排序的索引页进行排序
-  - 更新表的统计信息为最新状态
+    - 如果表中的行被删除或者拆分过，则修复这张表
+    - 对于没有排序的索引页进行排序
+    - 更新表的统计信息为最新状态
 - 对于 InnoDB，`OPTIMIZE TABLE` 的作用
-  - 等价于 `ALTER TABLE ... FORCE`，将会重建表、索引和统计信息，并且释放聚簇索引中未使用的空间
+    - 等价于 `ALTER TABLE ... FORCE`，将会重建表、索引和统计信息，并且释放聚簇索引中未使用的空间
 
 ### Modify Password
 
@@ -157,20 +157,23 @@ REM mysqladmin 可以查看帮助文件
 MySQL 常用的有三种存储引擎([详情参考](https://blog.csdn.net/ybdesire/article/details/83154312))：
 
 1. MyISAM：选择密集型（筛选大量数据时非常迅速）、插入密集型的表（管理邮件或Web服务器日志数据）；
-2. MEMORY：数据量小，且被频繁访问；
-3. InnoDB：需要事务支持，并且有较高的并发读取频率。
-4. 其他可参考 [MySQL 的文档](https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html)
+1. MEMORY：数据量小，且被频繁访问；
+1. InnoDB：需要事务支持，并且有较高的并发读取频率。
+1. 其他可参考 [MySQL 的文档](https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html)
 
 ### Row_Format
 
 MySQL 常用的Row_Format有两种：
 
 1. FIXED：静态表[static/fixed ]，表里面不存在varchar、text以及其变形、blob以及其变形的字段，即每条记录所占用的字节一样。
-  - 优点读取快，缺点浪费额外一部分空间。
-  - fixed--->dynamic: 这会导致CHAR变成VARCHAR
-2. DYNAMIC：动态表，表的字段类型有很多种
-  - 优点是节省空间,缺点是读取的时间的开销
-  - dynamic--->fixed: 这会导致VARCHAR变成CHAR
+
+- 优点读取快，缺点浪费额外一部分空间。
+- fixed--->dynamic: 这会导致CHAR变成VARCHAR
+
+1. DYNAMIC：动态表，表的字段类型有很多种
+
+- 优点是节省空间,缺点是读取的时间的开销
+- dynamic--->fixed: 这会导致VARCHAR变成CHAR
 
 ### Collation
 

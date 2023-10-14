@@ -1,44 +1,53 @@
 ---
-title: "为 minimal-mistakes-jekyll 加入 MathJax 的支持"
-excerpt: "因为 GitHub 的 Markdown 不支持数学公式，只好借助于 MathJax 来实现。"
+title: 为 minimal-mistakes-jekyll 加入 MathJax 的支持
+excerpt: 因为 GitHub 的 Markdown 不支持数学公式，只好借助于 MathJax 来实现。
 categories:
-- 编程
+  - 编程
 tags:
-- Markdown
-- MathJax
+  - Markdown
+  - MathJax
 updated: 2019-04-03
 toc: true
 toc_sticky: true
 mathjax: true
 ---
 
-
-
 # 环境搭建
 
 1. 去 [MathJax](http://www.mathjax.org) 下载最新的软件包，一个是 [MathJax Docs](http://docs.mathjax.org/en/latest/installation.html)，还有一个是 [GitHub MathJax](https://github.com/mathjax/MathJax/releases)。
-2. 有了最新的软件包，解压缩并修改原目录名为 MathJax，然后把 MathJax 放到你 fork 的 minimal-mistakes-jekyll 项目中的 assets/js/ 目录下。
-3. 在 minimal-mistakes-jekyll 项目中打开 _layouts 目录下的 single.html 文件。
-4. 在 single.html 文件中找到 \<article class="page" ... \>，然后再后面加入以下代码
+1. 有了最新的软件包，解压缩并修改原目录名为 MathJax，然后把 MathJax 放到你 fork 的 minimal-mistakes-jekyll 项目中的 assets/js/ 目录下。
+1. 在 minimal-mistakes-jekyll 项目中打开 _layouts 目录下的 single.html 文件。
+1. 在 single.html 文件中找到 <article class="page" ... >，然后再后面加入以下代码
 
 ```javascript
-{% if page.mathjax %}
-  <script type="text/x-mathjax-config">
+{
+    %
+    if page.mathjax %
+} <
+script type = "text/x-mathjax-config" >
     MathJax.Hub.Config({
-      extensions: ["tex2jax.js"],
-      jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [ ['$','$']],
-        displayMath: [ ['$$','$$']],
-        processEscapes: true
-      },
-      "HTML-CSS": { fonts: ["TeX"] }
-    });
-  </script>
-  <script type="text/javascript"
-    src="/assets/js/MathJax/MathJax.js?config=TeX-AMS_HTML-full">
-  </script>
-{% endif %}
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [
+                ['$', '$']
+            ],
+            displayMath: [
+                ['$$', '$$']
+            ],
+            processEscapes: true
+        },
+        "HTML-CSS": {
+            fonts: ["TeX"]
+        }
+    }); <
+/script> <
+script type = "text/javascript"
+src = "/assets/js/MathJax/MathJax.js?config=TeX-AMS_HTML-full" >
+    <
+    /script> {
+        % endif %
+    }
 ```
 
 接下来就可以在 Markdown 中使用 MathJax 了。(注意 : 需要在文件头加入 mathjax: true)
@@ -48,12 +57,14 @@ mathjax: true
 ## 常用格式
 
 - 居中格式
-  - $$xxx$$
-  - $$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+
+    - $$xxx$$
+    - $$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
 
 - 靠左格式
-  - $xxx$
-  - $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$
+
+    - $xxx$
+    - $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$
 
 ## 常用符号
 
@@ -70,34 +81,34 @@ mathjax: true
 
 ## 希腊字母
 
-| 希腊字母 | 输入代码 | 小写字母 | 输入代码    |
-| -------- | -------- | -------- | :---------- |
-| A        | A        | α        | `\alpha`      |
-| B        | B        | β        | `\beta`       |
-| Γ        | `\Gamma`   | γ        | `\gamma`      |
-| Δ        | `\Delta`   | δ        | `\delta`      |
-| E        | E        | ϵ        | `\epsilon`    |
-|          |          | ε        | `\varepsilon` |
-| Z        | Z        | ζ        | `\zeta`       |
-| H        | H        | η        | `\eta`        |
-| Θ        | `\Theta`   | θ        | `\theta`      |
-| I        | I        | ι        | `\iota`       |
-| K        | K        | κ        | `\kappa`      |
-| Λ        | `\Lambda`  | λ        | \lambda     |
-| M        | M        | μ        | `\mu`         |
-| N        | N        | ν        | `\nu`         |
-| Ξ        | `\Xi`      | ξ        | `\xi`         |
-| O        | O        | ο        | `\omicron`    |
-| Π        | `\Pi`      | π        | `\pi`         |
-| P        | P        | ρ        | `\rho`        |
-| Σ        | `\Sigma`   | σ        | `\sigma`      |
-| T        | T        | τ        | `\tau`        |
-| Υ        | `\Upsilon` | υ        | `\upsilon`    |
-| Φ        | `\Phi`     | ϕ        | `\phi`        |
-|          |          | φ        | \varphi     |
-| X        | X        | χ        | `\chi`        |
-| Ψ        | `\Psi`     | ψ        | `\psi`        |
-| Ω        | `\Omega`   | ω        | `\omega`      |
+| 希腊字母 | 输入代码       | 小写字母 | 输入代码          |
+| ---- | ---------- | ---- | :------------ |
+| A    | A          | α    | `\alpha`      |
+| B    | B          | β    | `\beta`       |
+| Γ    | `\Gamma`   | γ    | `\gamma`      |
+| Δ    | `\Delta`   | δ    | `\delta`      |
+| E    | E          | ϵ    | `\epsilon`    |
+|      |            | ε    | `\varepsilon` |
+| Z    | Z          | ζ    | `\zeta`       |
+| H    | H          | η    | `\eta`        |
+| Θ    | `\Theta`   | θ    | `\theta`      |
+| I    | I          | ι    | `\iota`       |
+| K    | K          | κ    | `\kappa`      |
+| Λ    | `\Lambda`  | λ    | \lambda       |
+| M    | M          | μ    | `\mu`         |
+| N    | N          | ν    | `\nu`         |
+| Ξ    | `\Xi`      | ξ    | `\xi`         |
+| O    | O          | ο    | `\omicron`    |
+| Π    | `\Pi`      | π    | `\pi`         |
+| P    | P          | ρ    | `\rho`        |
+| Σ    | `\Sigma`   | σ    | `\sigma`      |
+| T    | T          | τ    | `\tau`        |
+| Υ    | `\Upsilon` | υ    | `\upsilon`    |
+| Φ    | `\Phi`     | ϕ    | `\phi`        |
+|      |            | φ    | \varphi       |
+| X    | X          | χ    | `\chi`        |
+| Ψ    | `\Psi`     | ψ    | `\psi`        |
+| Ω    | `\Omega`   | ω    | `\omega`      |
 
 ## 三角函数
 

@@ -54,8 +54,10 @@ hexo server
 ## 创建 Github Pages
 
 1. 创建 Github 账号
-2. 创建 Github 仓库：zhuyuanxiang.github.io
-3. 添加 ssh 到 Github
+
+1. 创建 Github 仓库：zhuyuanxiang.github.io
+
+1. 添加 ssh 到 Github
 
     ```powershell
     # 配置 git
@@ -71,7 +73,7 @@ hexo server
     ```
 
 注：ssh，简单来讲，就是一个秘钥，其中，`id_rsa`是你这台电脑的私人秘钥，不能给别人看的，`id_rsa.pub`是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。
-而后在GitHub的setting中，找到SSH keys的设置选项，点击`New SSH key`  
+而后在GitHub的setting中，找到SSH keys的设置选项，点击`New SSH key`
 把你的`id_rsa.pub`里面的信息复制进去。
 
 ## 部署 hexo

@@ -1,12 +1,12 @@
 ---
-title: "Ubuntu的ZSH安装说明"
-excerpt: "Ubuntu"
+title: Ubuntu的ZSH安装说明
+excerpt: Ubuntu
 categories:
-- Ubuntu
+  - Ubuntu
 tags:
-- Ubuntu
-- ZSH
-- Shell
+  - Ubuntu
+  - ZSH
+  - Shell
 date: 2022-04-18
 updated: 2022-04-18
 toc: true
@@ -36,7 +36,7 @@ echo $SHELL
 
 ## 安装 Oh My Zsh
 
-Oh My Zsh 是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，，可以给我们一种全新的命令行使用体验。[[1\]](https://matnoble.me/tech/ubuntu/install-zsh/#fn:1)
+Oh My Zsh 是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，，可以给我们一种全新的命令行使用体验。[[1]](https://matnoble.me/tech/ubuntu/install-zsh/#fn:1)
 
 ```shell
 # 1. 通过 curl
@@ -69,15 +69,15 @@ COMPLETION_WAITING_DOTS="true"
 
 # 启用已安装的插件，默认插件安装目录 `ohmyzsh/plugins`
 plugins=(
-    colorize 
-    colored-man-pages 
-    extract 
+    colorize
+    colored-man-pages
+    extract
     git
     screen
     web-search
     z
-    zsh-autosuggestions 
-    zsh-syntax-highlighting 
+    zsh-autosuggestions
+    zsh-syntax-highlighting
     git-open
 )
 ```
@@ -122,8 +122,6 @@ cd ..
 rm -rf fonts
 ```
 
-
-
 在Terminal（终端）中选择“配置文件→配置文件首选项→自定义字体→Ubuntu Mono derivative Powerline Regular”
 
 测试字体安装是否正常
@@ -155,18 +153,17 @@ source ~/.zshrc
 ## 参考资料
 
 1. [Zsh + Oh My Zsh 全程指南「程序员必备」](https://segmentfault.com/a/1190000013612471)
-2. [Zsh 全程指南](https://link.segmentfault.com/?enc=lCHwzOzwdIY%2F2wW8z3htAQ%3D%3D.9qhaw4GGJceqcSEcq%2BofPuiZ5%2Bj24QEy0kzP0TrjCuQduDZaW5BYDd4BCspbsbB1SpiByb42ZPoS%2B3mQ7PL0vw%3D%3D)
-3. [Ubuntu 16.04 下安装 Zsh 和 Oh My Zsh](https://link.segmentfault.com/?enc=kdnwxqzWYbgWoxx5JPPfaA%3D%3D.QcRUqDYxgtLooogt%2B6X%2FlUqz%2Fo1R9jllL6JXRorZIQ0wHhEDIZVPWPS8C9jFiPbM)
-4. [Ubuntu 下 Oh My Zsh 的最佳实践「安装及配置」 - SegmentFault 思否](https://segmentfault.com/a/1190000015283092)
-5. [Ubuntu20.04 配置Oh My Zsh](https://blog.csdn.net/baidu_26678247/article/details/120616902?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0.topblog&spm=1001.2101.3001.4242.1&utm_relevant_index=3)
-6. [Welcome to the Oh My Zsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
-7. [Installing ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#how-to-install-zsh-in-many-platforms)
-8. [Powerline fonts](https://github.com/powerline/fonts)
-9. [Zsh (简体中文)](https://wiki.archlinux.org/index.php/Zsh_(简体中文))
-10. [Download zsh from sourceforge](https://sourceforge.net/projects/zsh/files/)
-11. [Ubuntu 界面美化](https://blog.csdn.net/u011254082/article/details/52725512)
-12. [利用Oh-My-Zsh打造你的超级终端](https://blog.csdn.net/czg13548930186/article/details/72858289)
-13. [Ubuntu 下zsh的安装与配置](https://www.jianshu.com/p/4fde9ae77922)
-14. [oh-my-zsh 插件](https://hufangyun.com/2017/zsh-plugin/)
-15. [Linux终极shell-zsh的完美配置方案！——oh-my-zsh](https://blog.csdn.net/amoscykl/article/details/80616873)
-
+1. [Zsh 全程指南](https://link.segmentfault.com/?enc=lCHwzOzwdIY%2F2wW8z3htAQ%3D%3D.9qhaw4GGJceqcSEcq%2BofPuiZ5%2Bj24QEy0kzP0TrjCuQduDZaW5BYDd4BCspbsbB1SpiByb42ZPoS%2B3mQ7PL0vw%3D%3D)
+1. [Ubuntu 16.04 下安装 Zsh 和 Oh My Zsh](https://link.segmentfault.com/?enc=kdnwxqzWYbgWoxx5JPPfaA%3D%3D.QcRUqDYxgtLooogt%2B6X%2FlUqz%2Fo1R9jllL6JXRorZIQ0wHhEDIZVPWPS8C9jFiPbM)
+1. [Ubuntu 下 Oh My Zsh 的最佳实践「安装及配置」 - SegmentFault 思否](https://segmentfault.com/a/1190000015283092)
+1. [Ubuntu20.04 配置Oh My Zsh](https://blog.csdn.net/baidu_26678247/article/details/120616902?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0.topblog&spm=1001.2101.3001.4242.1&utm_relevant_index=3)
+1. [Welcome to the Oh My Zsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
+1. [Installing ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#how-to-install-zsh-in-many-platforms)
+1. [Powerline fonts](https://github.com/powerline/fonts)
+1. [Zsh (简体中文)](<https://wiki.archlinux.org/index.php/Zsh_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)>)
+1. [Download zsh from sourceforge](https://sourceforge.net/projects/zsh/files/)
+1. [Ubuntu 界面美化](https://blog.csdn.net/u011254082/article/details/52725512)
+1. [利用Oh-My-Zsh打造你的超级终端](https://blog.csdn.net/czg13548930186/article/details/72858289)
+1. [Ubuntu 下zsh的安装与配置](https://www.jianshu.com/p/4fde9ae77922)
+1. [oh-my-zsh 插件](https://hufangyun.com/2017/zsh-plugin/)
+1. [Linux终极shell-zsh的完美配置方案！——oh-my-zsh](https://blog.csdn.net/amoscykl/article/details/80616873)

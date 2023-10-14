@@ -1,10 +1,10 @@
 ---
-title: "Windows 10 学习日志"
-excerpt: "学习过程中使用 Windows 10 的一些经验"
+title: Windows 10 学习日志
+excerpt: 学习过程中使用 Windows 10 的一些经验
 categories:
-- 技巧
+  - 技巧
 tags:
-- Windows
+  - Windows
 date: 2020-06-14
 updated: 2020-06-14
 ---
@@ -14,13 +14,13 @@ updated: 2020-06-14
 ## Q&A
 
 1. BIOS 中设置「快速启动」后，没有进入 BIOS 设置模式，也没法启动 U 盘怎么办？
-   - 基于 Windows 10，按住 Shift + 点「重启」，选择「疑难解答」，选择「高级选项」，选择「UEFI固件设置」，选择「重启」就可以了。
-2. Win10怎样解除260个字符路径长度限制?
-   - Windows 文件系统 NTFS 的文件名和目录路径有最大长度 即 MAX_PATH 限制最长 260 个字符。
-   - Win+R，输入Gpedit.msc然后回车
-   - 沿着「本地计算机策略>计算机配置>管理模板>系统>文件系统>启用 Win32 长路径
-     - 启用 Win32 长路径后，列入清单的 win32 应用程序和 Windows 应用商店应用程序即可在支持每节点 260 个字符标准限制的文件系统上访问超出该限制的路径。启用此设置将导致在进程中可以访问长路径。
-3. 如何控制应用程序使用哪个 GPU？
+    - 基于 Windows 10，按住 Shift + 点「重启」，选择「疑难解答」，选择「高级选项」，选择「UEFI固件设置」，选择「重启」就可以了。
+1. Win10怎样解除260个字符路径长度限制?
+    - Windows 文件系统 NTFS 的文件名和目录路径有最大长度 即 MAX_PATH 限制最长 260 个字符。
+    - Win+R，输入Gpedit.msc然后回车
+    - 沿着「本地计算机策略>计算机配置>管理模板>系统>文件系统>启用 Win32 长路径
+        - 启用 Win32 长路径后，列入清单的 win32 应用程序和 Windows 应用商店应用程序即可在支持每节点 260 个字符标准限制的文件系统上访问超出该限制的路径。启用此设置将导致在进程中可以访问长路径。
+1. 如何控制应用程序使用哪个 GPU？
     - Graphics settings page (Settings > System > Display > Graphics settings)
     - 「应用程序」就点击「浏览」，添加相应的程序，设置「选项」为指定的GPU
     - 「APP」就直接在下拉菜单中选择
@@ -30,22 +30,22 @@ updated: 2020-06-14
 
 1. 在系统设置→可选功能→安装( OpenSSH 服务器、OpenSSH 客户端)
 
-2. 使用管理员权限打开 PowerShell，开启 SSH 服务
+1. 使用管理员权限打开 PowerShell，开启 SSH 服务
 
     ```powershell
     net start sshd
     ```
 
-3. 使用客户端软件登录
+1. 使用客户端软件登录
 
-  - username: 如果本身使用的是Email地址作为用户名称，Windows 10 会自动去掉域名地址和数字作为用户名，准确的名称需要参考「C:\\Users」目录中的用户名称
+- username: 如果本身使用的是Email地址作为用户名称，Windows 10 会自动去掉域名地址和数字作为用户名，准确的名称需要参考「C:\Users」目录中的用户名称
 
     ```powershell
     ssh username@servername
     ssh username@192.168.1.1
     ```
 
-4. 使用管理员权限打开 PowerShell，关闭 SSH 服务
+1. 使用管理员权限打开 PowerShell，关闭 SSH 服务
 
     ```powershell
     net stop sshd

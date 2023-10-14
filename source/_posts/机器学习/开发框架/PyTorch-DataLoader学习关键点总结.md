@@ -16,7 +16,7 @@ toc_sticky: true
 
 # PyTorch-DataLoader
 
-## Referecne
+## Reference
 
 [PyTorch学习笔记(6)——DataLoader源代码剖析](https://blog.csdn.net/g11d111/article/details/81504637)
 

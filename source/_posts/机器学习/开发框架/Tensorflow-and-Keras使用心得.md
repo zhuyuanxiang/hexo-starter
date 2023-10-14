@@ -1,6 +1,6 @@
 ---
 title: Tensorflow-and-Keras使用心得
-excerpt: ""
+excerpt: ''
 categories:
   - 编程
 tags:
@@ -28,27 +28,29 @@ toc_sticky: true
 
     ```python
     import os
-    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+
+    os.environ["TF_FORCE_GPU_ALLOW_GROWTH"] = "true"
     ```
 
-2. 使用 tensorflow 来实现
+1. 使用 tensorflow 来实现
 
     ```python
     import tensorflow as tf
-    if tf.__version__.startswith ( '1.' ) :  # tensorflow 1
-        config = tf.ConfigProto ( ) # allow_soft_placement=True
+
+    if tf.__version__.startswith("1."):  # tensorflow 1
+        config = tf.ConfigProto()  # allow_soft_placement=True
         config.gpu_options.allow_growth = True
-        sess = tf.Session ( config=config )
+        sess = tf.Session(config=config)
     else:  # tensorflow 2
-        tf.config.gpu.set_per_process_memory_growth ( enabled=True )
+        tf.config.gpu.set_per_process_memory_growth(enabled=True)
     ```
 
-3. 使用配置实现
+1. 使用配置实现
 
     ```python
-    gpus = tf.config.experimental.list_physical_devices ( 'GPU' )
-    if len ( gpus )> 0:
-       tf.config.experimental.set_memory_growth ( gpus [0], True )
+    gpus = tf.config.experimental.list_physical_devices("GPU")
+    if len(gpus) > 0:
+        tf.config.experimental.set_memory_growth(gpus[0], True)
     ```
 
 ### Memory Proportion
@@ -56,9 +58,9 @@ toc_sticky: true
 ```python
 from tensorflow.python.keras.backend import set_session
 
-config = tf.ConfigProto ( )
+config = tf.ConfigProto()
 config.gpu_options.per_process_gpu_memory_fraction = 0.9
-set_session ( tf.Session ( config=config ))
+set_session(tf.Session(config=config))
 ```
 
 ### Set Memory Limit
@@ -67,7 +69,8 @@ set_session ( tf.Session ( config=config ))
 
 ```python
 tf.config.experimental.set_virtual_device_configuration(
-        gpus[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=5000)])
+    gpus[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=5000)]
+)
 ```
 
 ## Keras

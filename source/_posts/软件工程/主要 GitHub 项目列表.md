@@ -1,13 +1,13 @@
 ---
-title: "主要 GitHub 项目列表"
-excerpt: "书籍的读书笔记、重构的代码库、学习的知识库等等。"
+title: 主要 GitHub 项目列表
+excerpt: 书籍的读书笔记、重构的代码库、学习的知识库等等。
 categories:
-- 项目
+  - 项目
 tags:
-- 重构
-- 仓库
-- 笔记
-- 编程
+  - 重构
+  - 仓库
+  - 笔记
+  - 编程
 date: 2019-12-29
 updated: 2020-04-02
 toc: false
@@ -23,7 +23,7 @@ toc_sticky: true
 
 ## Study Notes
 
- [笔记库项目](https://github.com/zhuyuanxiang/StudyNotes-CN)
+[笔记库项目](https://github.com/zhuyuanxiang/StudyNotes-CN)
 
 ### PRML
 
@@ -58,11 +58,11 @@ PRML: Pattern Recognition & Machine Learning, 《模式识别与机器学习》
 
 - 将代码从 Jupiter 改成 Python 的版本，方便程序员学习。
 - 将书中代码中存在的问题进行了修改
-  - 升级了某些不能使用的软件包
-  - 修改了某些已经过时的代码
+    - 升级了某些不能使用的软件包
+    - 修改了某些已经过时的代码
 - 提升了代码阅读质量
-  - 对某些部分进行了中文化处理，便于理解
-  - 增加了某些案例，方便对比学习
+    - 对某些部分进行了中文化处理，便于理解
+    - 增加了某些案例，方便对比学习
 - [GitHub 代码库](https://github.com/zhuyuanxiang/introduction_to_ml_with_python)
 
 ### Deep Learning with Python Notebooks
@@ -70,13 +70,13 @@ PRML: Pattern Recognition & Machine Learning, 《模式识别与机器学习》
 《Python 深度学习》
 
 - 从原作者的代码库中 fork 过来
-  - 将代码从 Jupiter 改成 Python 的版本，方便程序员学习。
+    - 将代码从 Jupiter 改成 Python 的版本，方便程序员学习。
 - 将书中代码中存在的问题进行了修改
-  - 升级了某些不能使用的软件包
-  - 修改了某些已经过时的代码
+    - 升级了某些不能使用的软件包
+    - 修改了某些已经过时的代码
 - 提升了代码阅读质量
-  - 对某些部分进行了中文化处理，便于理解
-  - 增加了某些案例，方便对比学习
+    - 对某些部分进行了中文化处理，便于理解
+    - 增加了某些案例，方便对比学习
 - [GitHub 代码库](https://github.com/zhuyuanxiang/deep-learning-with-python-notebooks)
 
 ### Tensorflow Cookbook
@@ -84,13 +84,13 @@ PRML: Pattern Recognition & Machine Learning, 《模式识别与机器学习》
 《Tensorflow 机器学习实战指南-第一版》
 
 - 从原作者的代码库中 fork 过来
-  - 将代码从 Jupiter 改成 Python 的版本，方便程序员学习。
+    - 将代码从 Jupiter 改成 Python 的版本，方便程序员学习。
 - 将书中代码中存在的问题进行了修改
-  - 升级了某些不能使用的软件包
-  - 修改了某些已经过时的代码
+    - 升级了某些不能使用的软件包
+    - 修改了某些已经过时的代码
 - 提升了代码阅读质量
-  - 对某些部分进行了中文化处理，便于理解
-  - 增加了某些案例，方便对比学习
+    - 对某些部分进行了中文化处理，便于理解
+    - 增加了某些案例，方便对比学习
 - [GitHub 代码库](https://github.com/zhuyuanxiang/tensorflow_cookbook)
 
 ### Python for Data Analysis
@@ -98,11 +98,11 @@ PRML: Pattern Recognition & Machine Learning, 《模式识别与机器学习》
 《利用 Python 进行数据分析——第一版》
 
 - 从原作者的代码库中 fork 过来
-  - 将代码从 Jupiter 改成 Python 的版本，方便程序员学习。
+    - 将代码从 Jupiter 改成 Python 的版本，方便程序员学习。
 - 将书中代码中存在的问题进行了修改
-  - 升级了某些不能使用的软件包
-  - 修改了某些已经过时的代码
+    - 升级了某些不能使用的软件包
+    - 修改了某些已经过时的代码
 - 提升了代码阅读质量
-  - 对某些部分进行了中文化处理，便于理解
-  - 增加了某些案例，方便对比学习
+    - 对某些部分进行了中文化处理，便于理解
+    - 增加了某些案例，方便对比学习
 - [GitHub 代码库](https://github.com/zhuyuanxiang/pydata-book)

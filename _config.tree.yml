@@ -22,13 +22,12 @@ links:
   github: https://github.com/zhuyuanxiang
   # 普通链接，可配置多个，以下是示例
   custom:
-  - name: Weibo
-    URL: https://weibo.com/ygpfr
-  - name: Douban
-    URL: https://www.douban.com/people/zhuyuanxiang/
-  - name: E-Mail
-    URL: mailto:zhuyuanxiang@gmail.com
-
+    - name: Weibo
+      URL: https://weibo.com/ygpfr
+    - name: Douban
+      URL: https://www.douban.com/people/zhuyuanxiang/
+    - name: E-Mail
+      URL: mailto:zhuyuanxiang@gmail.com
 
 # 可选, giscus 评论系统
 # 这里配置 https://giscus.app/zh-CN，将生成好的填在下面
@@ -78,5 +77,13 @@ about: true
 
 # 左侧导航栏，用文件名还是文章名
 sidebar:
-  # usePostTitle 为 ture 用文章名，不填或为 false 用文件名
+  # usePostTitle 为 true 用文章名，不填或为 false 用文件名
   usePostTitle: true
+
+math:
+  enable: true
+  engine: mathjax
+
+mathjax:
+  enable: true
+  cdn: //cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML

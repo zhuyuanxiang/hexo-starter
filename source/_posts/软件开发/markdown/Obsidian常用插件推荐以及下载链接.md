@@ -1,12 +1,12 @@
 ---
 title: Obsidian常用插件推荐以及下载链接
 categories:
-- 笔记
+  - 笔记
 tags:
-- Obsidian
-- Markdown
-- 笔记
-- 知识图谱
+  - Obsidian
+  - Markdown
+  - 笔记
+  - 知识图谱
 date: 2023-10-07
 update: 2023-10-07
 ---
@@ -23,28 +23,28 @@ plugins目录就是插件的目录，打开就能看到已经下载的插件，�
 
 因为插件的名称和下载之后目录的名称不一定相同，所以我做了一个对照表，大家可以参考
 
-|插件名（文章中写的）|插件文件夹（分享在阿里云盘的目录）|
-|---|---|
-|Advanced Tables|table-editor-obsidian|
-|Auto Link Title|obsidian-auto-link-title|
-|Clear Unused Images|oz-clear-unused-images|
-|Commander|cmdr|
-|Dataview|dataview|
-|Excalidraw|obsidian-excalidraw-plugin|
-|Hover Editor|obsidian-hover-editor|
-|Image auto upload Plugin|obsidian-image-auto-upload-plugin|
-|Outliner|obsidian-outliner|
-|Pandoc Plugin|obsidian-pandoc|
-|Projects|obsidian-projects|
-|Publish to WordPress for Obsidian|obsidian-wordpress|
-|Local images|obsidian-local-images|
-|Remotely Save|remotely-save|
-|Weread Plugin|obsidian-weread-plugin|
+| 插件名（文章中写的）                        | 插件文件夹（分享在阿里云盘的目录）                 |
+| --------------------------------- | --------------------------------- |
+| Advanced Tables                   | table-editor-obsidian             |
+| Auto Link Title                   | obsidian-auto-link-title          |
+| Clear Unused Images               | oz-clear-unused-images            |
+| Commander                         | cmdr                              |
+| Dataview                          | dataview                          |
+| Excalidraw                        | obsidian-excalidraw-plugin        |
+| Hover Editor                      | obsidian-hover-editor             |
+| Image auto upload Plugin          | obsidian-image-auto-upload-plugin |
+| Outliner                          | obsidian-outliner                 |
+| Pandoc Plugin                     | obsidian-pandoc                   |
+| Projects                          | obsidian-projects                 |
+| Publish to WordPress for Obsidian | obsidian-wordpress                |
+| Local images                      | obsidian-local-images             |
+| Remotely Save                     | remotely-save                     |
+| Weread Plugin                     | obsidian-weread-plugin            |
 
 **注意：**
 
 1. 首次下载插件后，放到插件目录需要在Obsidian中启用才可使用
-2. 大家如果是更新插件，请不要直接删除原来的文件夹，只需要覆盖除了data.json之外的文件即可（**data.json文件保存了插件的配置，删除后会导致插件配置丢失**）
+1. 大家如果是更新插件，请不要直接删除原来的文件夹，只需要覆盖除了data.json之外的文件即可（**data.json文件保存了插件的配置，删除后会导致插件配置丢失**）
 
 下面进入正题，推荐我常用的插件。
 
@@ -108,7 +108,7 @@ plugins目录就是插件的目录，打开就能看到已经下载的插件，�
 ```text
 table WITHOUT ID
 link(file.path, file.path) as "路径", default(status, "publish") as "状态",  elink("https://gslnzfq.cn/archives/"+post_id, "查看") as "网站链接"
-where post_id>0 
+where post_id>0
 sort default(status, "publish") desc
 ```
 
@@ -246,6 +246,7 @@ S3/Dropbox/OneDrive这些都是云服务就不多说了，webdav是一个网盘�
 配置完成之后，我们可以使用 CMD/Ctrl + P 打开命令，查找 weread 执行即可，支持下面的三个操作。
 
 ![](media/v2-d2fe4a44d12ba6e8c7ddeed6f6815664_720w.webp)该插件的github链接在[这里](https://link.zhihu.com/?target=https%3A//github.com/zhaohongxuan/obsidian-weread-plugin)，有些网络可能无法访问，那就直接在上述分享的文件夹下载插件查看使用文档使用即可。
+
 ## 在线下载插件方案
 
 上述的插件都是阿里云盘存储的，有时候可能更新不是很及时，所以我写了一个插件代理服务，可以通过插件实现在Obsidian下载和更新插件，请查看下面的文章：

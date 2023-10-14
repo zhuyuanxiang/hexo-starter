@@ -1,9 +1,9 @@
 ---
-title: "小企业的NAS932+的安装过程"
+title: 小企业的NAS932+的安装过程
 categories:
-- NAS
+  - NAS
 tags:
-- NAS
+  - NAS
 date: 2023-04-13
 updated: 2023-04-13
 toc: true
@@ -57,36 +57,36 @@ toc_sticky: true
 双击新记录，原始的两条记录不动，输入
 
 - 新增A类型
-  - 名称：
-  - IP：192.168.1.2
+    - 名称：
+    - IP：192.168.1.2
 - 新增A类型
-  - 名称：mail
-  - IP：192.168.1.2
-  - 注：其他类似（ldap, pop3, smtp, www）
+    - 名称：mail
+    - IP：192.168.1.2
+    - 注：其他类似（ldap, pop3, smtp, www）
 
 解析
 
 - 启用解析服务：true
-  - 启用转发器
-  - 转发器1：192.168.1.1
-  - 转发器2：114.114.114.114
+    - 启用转发器
+    - 转发器1：192.168.1.1
+    - 转发器2：114.114.114.114
 
 ## LDAP Server
 
 设置→服务器→启动LDAP服务器：true
 
 - 作为Provider服务器
-  - FQDN：company_domain.org
-  - root的密码
+    - FQDN：company_domain.org
+    - root的密码
 - 备份和还原
-  - 备份→设置→启动计划管理备份→每天00:00
-  - 目的地：backup
-  - 备份版本数量上限：10
+    - 备份→设置→启动计划管理备份→每天00:00
+    - 目的地：backup
+    - 备份版本数量上限：10
 - 管理用户
-  - 新增：先输入每个用户的名称、描述、电子邮件
+    - 新增：先输入每个用户的名称、描述、电子邮件
 - 管理群组
-  - 新增：从高层开始建立群组
-  - 编辑群组成员：低群组直接包括高群组成员
+    - 新增：从高层开始建立群组
+    - 编辑群组成员：低群组直接包括高群组成员
 
 注：默认密码（`12345678`）
 
@@ -95,24 +95,24 @@ toc_sticky: true
 ### Synology Mail Server
 
 - SMTP
-  - 账户类型：LDAP用户
-  - 启用SMTP：true
-  - 启用SMTP认证：true
-  - 主机名（FQDN）：company_domain.org
-  - 端口：25
-  - 邮件大小上限：100
-  - 启用SMTP-SSL端口：465
-  - 启用SMTP-TLS端口：587
+    - 账户类型：LDAP用户
+    - 启用SMTP：true
+    - 启用SMTP认证：true
+    - 主机名（FQDN）：company_domain.org
+    - 端口：25
+    - 邮件大小上限：100
+    - 启用SMTP-SSL端口：465
+    - 启用SMTP-TLS端口：587
 - IMAP/POP3
-  - 启用POP3：true
-  - 启用POP3 SSL/TSL：true
-  - 启用IMAP：true
-  - 启用IMAP SSL/TSL：true
+    - 启用POP3：true
+    - 启用POP3 SSL/TSL：true
+    - 启用IMAP：true
+    - 启用IMAP SSL/TSL：true
 - 垃圾邮件：nil
 - 别名
-  - 创建
-  - 别名：root
-  - 用户账号：zhuyuanxiang@company_domain.org
+    - 创建
+    - 别名：root
+    - 用户账号：zhuyuanxiang@company_domain.org
 
 ## 控制面板
 
@@ -127,12 +127,12 @@ toc_sticky: true
 - 软件库
 - 公司产品发布包
 - 业务一组
-  - 常规
-  - 对“网上邻居”隐藏共享文件夹：true
-  - 对没有权限的用户隐藏子文件夹和文件：true
-  - 启用回收站：true
-  - 高级
-  - 启用数据总和检查码以实现高级数据完整性：true
+    - 常规
+    - 对“网上邻居”隐藏共享文件夹：true
+    - 对没有权限的用户隐藏子文件夹和文件：true
+    - 启用回收站：true
+    - 高级
+    - 启用数据总和检查码以实现高级数据完整性：true
 - 业务二组
 - 市场部
 - 行政部
@@ -146,9 +146,9 @@ toc_sticky: true
 SMB：
 
 - 启用SMB服务：true
-  - 工作群组：WORKGROUP
-  - 对没有权限的用户隐藏共享文件夹
-  - 启动传输日志
+    - 工作群组：WORKGROUP
+    - 对没有权限的用户隐藏共享文件夹
+    - 启动传输日志
 
 AFP：
 
@@ -179,28 +179,28 @@ rsync：
 - 服务器名称：DSM-COMPANY-GIT
 - 默认网关：192.168.1.1
 - 连接性：在HTTP响应中启用“Server”标题
-  - 自定义“Server”标题：company_domain
+    - 自定义“Server”标题：company_domain
 
 ### 终端机和SNMP
 
 - 启用Telnet功能：true
 - 启用SSH功能：true
-  - 端口：22
+    - 端口：22
 
 ### 登录门户
 
 - DSM
-  - 自动将DSM桌面的HTTP连接重定向到HTTPS：true
+    - 自动将DSM桌面的HTTP连接重定向到HTTPS：true
 - 应用程序
-  - audio
-  - calendar
-  - download
-  - file
-  - note
-  - sso
-  - drive
-  - photo
-  - video
+    - audio
+    - calendar
+    - download
+    - file
+    - note
+    - sso
+    - drive
+    - photo
+    - video
 
 ### 区域设置
 
@@ -209,20 +209,20 @@ rsync：
 ### 通知设置
 
 - 启用电子邮件通知
-  - SMTP服务器：192.168.1.2
-  - SMTP端口：25
+    - SMTP服务器：192.168.1.2
+    - SMTP端口：25
 
 ### 硬件和电源
 
 - 常规
-  - 修复电源问题后自动重新启动：true
-  - 静音模式：true
+    - 修复电源问题后自动重新启动：true
+    - 静音模式：true
 - 硬盘休眠
-  - 休眠：1小时
-  - 休眠后耗电量降到最低：true
+    - 休眠：1小时
+    - 休眠后耗电量降到最低：true
 - UPS
-  - 启用UPS支持：true
-  - 直到电量不足
+    - 启用UPS支持：true
+    - 直到电量不足
 
 ### Synology账户
 
@@ -241,10 +241,10 @@ zhuyuanxiang@gmail.com
 ## Docker
 
 - 映像：
-  - gitlab/gitlab-ce:latest
-  - centos:latest
+    - gitlab/gitlab-ce:latest
+    - centos:latest
 - 容器：
-  - gitlab-ce-bridge
+    - gitlab-ce-bridge
 
 ### gitlab-ce-bridge
 

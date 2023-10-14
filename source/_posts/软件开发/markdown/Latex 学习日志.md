@@ -1,11 +1,11 @@
 ---
-title: "Latex 学习日志"
-excerpt: "Latex 使用过程中的常见问题"
+title: Latex 学习日志
+excerpt: Latex 使用过程中的常见问题
 categories:
-- 编程
+  - 编程
 tags:
-- Latex
-- PDF
+  - Latex
+  - PDF
 date: 2019-01-01
 updated: 2020-04-30
 toc: true
@@ -131,9 +131,9 @@ You can also insert Latin text in your document
 ### Contents
 
 - 修改「Contents」为中文「目录」或者其他名称
-  - `\renewcommand*\contentsname{目录}`
+    - `\renewcommand*\contentsname{目录}`
 - 目录标题Content的字体改为18pt加粗
-  - `\renewcommand{\contentsname}{\fontsize{18pt}{\baselineskip}\selectfont \textbf{Content}}`
+    - `\renewcommand{\contentsname}{\fontsize{18pt}{\baselineskip}\selectfont \textbf{Content}}`
 
 ### Section Style
 

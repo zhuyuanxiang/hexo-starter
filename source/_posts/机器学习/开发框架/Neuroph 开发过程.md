@@ -1,14 +1,14 @@
 ---
-title: "Neuroph 开发过程"
-excerpt: "使用 Eclipse JavaEE 和 Neuroph 学习神经网络，编写基于 Java 的神经网络模型"
+title: Neuroph 开发过程
+excerpt: 使用 Eclipse JavaEE 和 Neuroph 学习神经网络，编写基于 Java 的神经网络模型
 categories:
-- 编程
+  - 编程
 tags:
-- Eclipse
-- Neuroph
-- Java
-- 编程
-- 神经网络
+  - Eclipse
+  - Neuroph
+  - Java
+  - 编程
+  - 神经网络
 date: 2019-01-25
 updated: 2019-01-26
 toc: true
@@ -19,11 +19,11 @@ toc_sticky: true
 
 - JDK 的安装 : 建议 JRE 1.8 以上；
 - Neuroph 安装 : 建议 2.94 的版本。[下载地址](http://neuroph.sourceforge.net/)
-  - neuroph-core-2.94 : 开发的核心包
-  - neuroph-samples-2.94 : 使用这个框架的例子
+    - neuroph-core-2.94 : 开发的核心包
+    - neuroph-samples-2.94 : 使用这个框架的例子
 - Eclipse 的安装 : 建议是 java 2018-09 以上的版本
-  - 配置“Windows→Preferences→Java→Build Path→User Libraries→New”一个“neuroph-2.94”，再“Add External Jars”就可以把相关的包全部定义在这个变量下面。
-  - 也可以使用 Maven 配置。
+    - 配置“Windows→Preferences→Java→Build Path→User Libraries→New”一个“neuroph-2.94”，再“Add External Jars”就可以把相关的包全部定义在这个变量下面。
+    - 也可以使用 Maven 配置。
 
 ## 开发小结
 

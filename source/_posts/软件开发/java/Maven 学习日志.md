@@ -1,11 +1,11 @@
 ---
-title: "Maven 学习日志"
-excerpt: "Maven"
+title: Maven 学习日志
+excerpt: Maven
 categories:
-- 编程
+  - 编程
 tags:
-- Maven
-- 编程
+  - Maven
+  - 编程
 date: 2019-01-01
 updated: 2020-05-01
 toc: true

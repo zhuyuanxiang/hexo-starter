@@ -23,23 +23,23 @@ toc_sticky: true
 
 ```json
 {
-    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\PyHanlp\\python.exe",
-    "python.envFile": "C:\\Users\\Administrator\\IdeaProjects\\Hanlp-Books-Examples\\.vscode\\prod.env",
-    "python.autoComplete.extraPaths": [
-        "C:\\Users\\Administrator\\IdeaProjects\\Hanlp-Books-Examples\\src\\main\\python\\"
-    ],
-    "python.analysis.extraPaths": [
-        "C:\\Users\\Administrator\\IdeaProjects\\Hanlp-Books-Examples\\src\\main\\python\\"
-    ],
-    "jupyter.notebookFileRoot": "${workspaceFolder}"
+  "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\PyHanlp\\python.exe",
+  "python.envFile": "C:\\Users\\Administrator\\IdeaProjects\\Hanlp-Books-Examples\\.vscode\\prod.env",
+  "python.autoComplete.extraPaths": [
+    "C:\\Users\\Administrator\\IdeaProjects\\Hanlp-Books-Examples\\src\\main\\python\\"
+  ],
+  "python.analysis.extraPaths": [
+    "C:\\Users\\Administrator\\IdeaProjects\\Hanlp-Books-Examples\\src\\main\\python\\"
+  ],
+  "jupyter.notebookFileRoot": "${workspaceFolder}"
 }
 ```
 
 1. `python.pythonPath`: python 的环境路径
-2. `python.envFile`: Debug 时使用的环境变量
-3. `python.autoComplete.extraPaths`: 自定义软件包的路径用于自动补全功能
-4. `python.analysis.extraPaths`: 自定义软件包的路径用于分析开发环境
-5. `jupyter.notebookFileRoot`: ${workspaceFolder} Notebook 的默认路径为 workspaceFolder
+1. `python.envFile`: Debug 时使用的环境变量
+1. `python.autoComplete.extraPaths`: 自定义软件包的路径用于自动补全功能
+1. `python.analysis.extraPaths`: 自定义软件包的路径用于分析开发环境
+1. `jupyter.notebookFileRoot`: \$\{workspaceFolder} Notebook 的默认路径为 workspaceFolder
 
 #### Conda
 
@@ -51,31 +51,35 @@ VSCode 找不到 Conda 创建的 环境，就将 Python 和 Jupyter 插件删除
 
 [Help Document](https://code.visualstudio.com/docs/editor/variables-reference)
 
-${workspaceFolder} VS Code 打开的目录
+\$\{workspaceFolder} VS Code 打开的目录
 
-${workspaceFolderBasename}   当前打开的文件夹的名字
+\$\{workspaceFolderBasename}   当前打开的文件夹的名字
 
-${file} 当前打开正在编辑的文件名，包括绝对路径，文件名，文件后缀名
+\$\{file} 当前打开正在编辑的文件名，包括绝对路径，文件名，文件后缀名
 
-${relativeFile} 从当前打开的文件夹到当前打开的文件的路径
+\$\{relativeFile} 从当前打开的文件夹到当前打开的文件的路径
 
-    如 当前打开的是test文件夹，当前的打开的是main.c，并有test / first / second / main.c
+```
+如 当前打开的是test文件夹，当前的打开的是main.c，并有test / first / second / main.c
 
-    那么此变量代表的是  first / second / main.c
+那么此变量代表的是  first / second / main.c
+```
 
-${fileBasename}  当前打开的文件名+后缀名，不包括路径
+\$\{fileBasename}  当前打开的文件名+后缀名，不包括路径
 
-${fileBasenameNoExtension} 当前打开的文件的文件名，不包括路径和后缀名
+\$\{fileBasenameNoExtension} 当前打开的文件的文件名，不包括路径和后缀名
 
-${fileDirname} 当前打开的文件所在的绝对路径，不包括文件名
+\$\{fileDirname} 当前打开的文件所在的绝对路径，不包括文件名
 
-${fileExtname} 当前打开的文件的后缀名
+\$\{fileExtname} 当前打开的文件的后缀名
 
-${cwd} task runner 在启动时的工作目录
+\$\{cwd} task runner 在启动时的工作目录
 
-    跟 cmd 里面的 cwd 是一样的
+```
+跟 cmd 里面的 cwd 是一样的
+```
 
-${lineNumber}  当前打开的文件，光标所在的行数
+\$\{lineNumber}  当前打开的文件，光标所在的行数
 
 ## Errors
 
@@ -86,8 +90,8 @@ VSCode 打开过大的文件时，会报错。
 解决方案：
 
 1. 在配置 ( Settings ) 中，输入``files.maxMemoryForLargeFilesMB`，就可以调整 VSCode 使用的最大内存
-2. 如果不想永久调整使用的内存大小，也可以在命令行输入 `Code --max-memory=8192M` 就可以打开大文件。
-   1. 8192M 就是希望设置的内存大小，也可以根据自己的硬件配置其他参数
+1. 如果不想永久调整使用的内存大小，也可以在命令行输入 `Code --max-memory=8192M` 就可以打开大文件。
+    1. 8192M 就是希望设置的内存大小，也可以根据自己的硬件配置其他参数
 
 ### Terminal Fonts
 
@@ -98,12 +102,12 @@ VSCode 打开过大的文件时，会报错。
 ### Remote Development
 
 - Remote Development : 安装这个插件从而支持远程开发
-  - Remote SSH : 使用 SSH Server 进行远程开发
-  - 安装过程中遇到 VS Code Server Failed，可以重启电脑，删除 `C:\\Users\\username\\.vscodeserver` 目录，然后再次通过 VSCode 激活安装
-  - python 开发时，需要把 conda 的运行目录加入 path 中，这样才能使用 conda 进行安装
-  - Remote WSL : 使用 WSL ( Windows Subsystem for Linux )
-  - Remote Containers : 使用 Docker 进行远程开发
-  - 注：WSL 的性能不如 SSH 好，因此开发环境建议使用 Windows 10，服务器环境建议使用 Ubuntu
+    - Remote SSH : 使用 SSH Server 进行远程开发
+    - 安装过程中遇到 VS Code Server Failed，可以重启电脑，删除 `C:\\Users\\username\\.vscodeserver` 目录，然后再次通过 VSCode 激活安装
+    - python 开发时，需要把 conda 的运行目录加入 path 中，这样才能使用 conda 进行安装
+    - Remote WSL : 使用 WSL ( Windows Subsystem for Linux )
+    - Remote Containers : 使用 Docker 进行远程开发
+    - 注：WSL 的性能不如 SSH 好，因此开发环境建议使用 Windows 10，服务器环境建议使用 Ubuntu
 
 ### Latex in use
 
@@ -117,20 +121,20 @@ VSCode 打开过大的文件时，会报错。
 ### Markdown in use
 
 - Markdown All in One : 各种指定 Markdown 需要的插件；
-  - Keyboard shortcuts
-  - Table of contents
-  - List editing
-  - Print Markdown to HTML
-  - GitHub Flavored Markdown
-  - Math
-  - Auto completions
-  - Paste Link
-  - Open Preview
+    - Keyboard shortcuts
+    - Table of contents
+    - List editing
+    - Print Markdown to HTML
+    - GitHub Flavored Markdown
+    - Math
+    - Auto completions
+    - Paste Link
+    - Open Preview
 - Markdown Theme Kit
 - Markdown YAML Preamble
 - markdown lint
 - Pangu Markdown VSCode: 定制开发的插件供自己使用
-  - @see [中文文案排版指北](https://GitHub.com/sparanoid/chinese-copywriting-guidelines) 
+    - @see [中文文案排版指北](https://GitHub.com/sparanoid/chinese-copywriting-guidelines)
 - indent-switcher: 将缩进的 2 个空格转换成 4 个空格
 
 ### Markdown for test
@@ -152,10 +156,10 @@ VSCode 打开过大的文件时，会报错。
 ### javascript in use
 
 - jshint
-  - `( use 'esversion: 6' )`警告
-  - 在`*.js`文件头加入`/* jshint esversion: 6 */`，在这个文件中就不会再报这个警告了
-  - 在`setting.json`文件中加入`"jshint.options": {"esversion": 6},`，在所有文件中就不会再报这个警告了
-  - js 文件的头加上 `/* jshint -W032 */` 就可以关闭 jshint W032 的检查
+    - `( use 'esversion: 6' )`警告
+    - 在`*.js`文件头加入`/* jshint esversion: 6 */`，在这个文件中就不会再报这个警告了
+    - 在`setting.json`文件中加入`"jshint.options": {"esversion": 6},`，在所有文件中就不会再报这个警告了
+    - js 文件的头加上 `/* jshint -W032 */` 就可以关闭 jshint W032 的检查
 
 ### Python in use
 
@@ -220,11 +224,11 @@ VSCode 打开过大的文件时，会报错。
 ### 国内镜像快速下载vscode server
 
 1. 使用VSCode，打开远程服务器，现在服务器上已经存在下载进程
-2. 使用ssh登录远程服务器，找出下载地址
-   1. 输入：`ps aux|grep wget`，得到：`wget --tries=1 --connect-timeout=7 --dns-timeout=7 -nv -O vscode-server.tar.gz https://update.code.visualstudio.com/commit:b380da4ef1ee00e224a15c1d4d9793e27c2b6302/server-linux-x64/stable`
-   2. 去掉`-nv`再次执行`wget --tries=1 --connect-timeout=7 --dns-timeout=7 -O vscode-server.tar.gz https://update.code.visualstudio.com/commit:b380da4ef1ee00e224a15c1d4d9793e27c2b6302/server-linux-x64/stable`，得到真实地址：`https://az764295.vo.msecnd.net/stable/b380da4ef1ee00e224a15c1d4d9793e27c2b6302/vscode-server-linux-x64.tar.gz`
-   3. 将`az764295.vo.msecnd.net`替换为`vscode.cdn.azure.cn`，在本地电脑下载完成
-   4. 将下载后的`vscode-server-llinux-x64.tar.gz`文件上传到服务器`~/.vscode-server/bin/b380da4ef1ee00e224a15c1d4d9793e27c2b6302`目录下
-   5. 执行解压命令：`tar xf vscode-server-llinux-x64.tar.gz`
-   6. 执行移动命令：`mv vscode-server-llinux-x64/* .`
-3. 关闭本地的VSCode，再次打开远程服务器访问，正常。
+1. 使用ssh登录远程服务器，找出下载地址
+    1. 输入：`ps aux|grep wget`，得到：`wget --tries=1 --connect-timeout=7 --dns-timeout=7 -nv -O vscode-server.tar.gz https://update.code.visualstudio.com/commit:b380da4ef1ee00e224a15c1d4d9793e27c2b6302/server-linux-x64/stable`
+    1. 去掉`-nv`再次执行`wget --tries=1 --connect-timeout=7 --dns-timeout=7 -O vscode-server.tar.gz https://update.code.visualstudio.com/commit:b380da4ef1ee00e224a15c1d4d9793e27c2b6302/server-linux-x64/stable`，得到真实地址：`https://az764295.vo.msecnd.net/stable/b380da4ef1ee00e224a15c1d4d9793e27c2b6302/vscode-server-linux-x64.tar.gz`
+    1. 将`az764295.vo.msecnd.net`替换为`vscode.cdn.azure.cn`，在本地电脑下载完成
+    1. 将下载后的`vscode-server-llinux-x64.tar.gz`文件上传到服务器`~/.vscode-server/bin/b380da4ef1ee00e224a15c1d4d9793e27c2b6302`目录下
+    1. 执行解压命令：`tar xf vscode-server-llinux-x64.tar.gz`
+    1. 执行移动命令：`mv vscode-server-llinux-x64/* .`
+1. 关闭本地的VSCode，再次打开远程服务器访问，正常。

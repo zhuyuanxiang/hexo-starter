@@ -1,15 +1,15 @@
 ---
-title: "Pandoc 学习笔记"
-excerpt: "Pandoc 使用过程中的常见问题"
+title: Pandoc 学习笔记
+excerpt: Pandoc 使用过程中的常见问题
 categories:
-- 编程
+  - 编程
 tags:
-- pandoc
-- Markdown
-- Latex
-- PDF
-- DOCX
-- PPTX
+  - pandoc
+  - Markdown
+  - Latex
+  - PDF
+  - DOCX
+  - PPTX
 date: 2020-05-01
 updated: 2020-05-05
 toc: true
@@ -21,14 +21,14 @@ toc_sticky: false
 ## Installation
 
 - 下载 [pandoc 软件](https://www.pandoc.org/)
-  - 安装目录：`C:\Program Files\Pandoc`
-    - 帮助文件：`Pandoc User's Guide.html`
+    - 安装目录：`C:\Program Files\Pandoc`
+        - 帮助文件：`Pandoc User's Guide.html`
 - 查看 [pandoc 项目](https://github.com/jgm/pandoc)
 - 了解 [pandoc 模板](https://github.com/jgm/pandoc-templates)
 - 下载 [TexLive 软件](http://tug.org/texlive/)
-  - 尽量安装完全版，避免使用过程中缺失宏包
+    - 尽量安装完全版，避免使用过程中缺失宏包
 - 下载 [Python 软件](https://www.python.org/)
-  - 使用过滤器的时候才会用到，不是必须！
+    - 使用过滤器的时候才会用到，不是必须！
 
 ## Output Chinese Document
 
@@ -81,12 +81,12 @@ toc_sticky: false
 
 `pandoc test.md -o test-yahei.pdf --pdf-engine=xelatex -V mainfont="Microsoft YaHei" --highlight-style=breezeDark`
 
-- '--highlight-style='_STYLE_\|_FILE_
-  - _STYLE_ ： `pygments`(默认)、`kate`, `monochrome`, `breezeDark`, `espresso`, `zenburn`, `haddock`, 和`tango`
-  - _FILE_ ： 以 JSON 为文件格式，以 `.theme` 为文件后缀，基于 KDE 语法解析。
-    - 基于 pandoc 的默认模式生成自己的主题文件：`pandoc --print-highlight-style pygments > my.theme`
+- '--highlight-style='_STYLE_|_FILE_
+    - _STYLE_ ： `pygments`(默认)、`kate`, `monochrome`, `breezeDark`, `espresso`, `zenburn`, `haddock`, 和`tango`
+    - _FILE_ ： 以 JSON 为文件格式，以 `.theme` 为文件后缀，基于 KDE 语法解析。
+        - 基于 pandoc 的默认模式生成自己的主题文件：`pandoc --print-highlight-style pygments > my.theme`
 - `--syntax-definition=`_FILE_
-  - 一个 KDE XML 语法定义的文件，用于语法高亮代码块。可以被用于支持新的语言 或者 替代已经定义的语言。
+    - 一个 KDE XML 语法定义的文件，用于语法高亮代码块。可以被用于支持新的语言 或者 替代已经定义的语言。
 
 ## Templates
 
@@ -136,7 +136,7 @@ zYxTom.pptx 是提供格式的文档。
 % date
 ```
 
-如果某个信息不想输入，可以保持空白。详情参考[翻译文档](https://github.com/zhuyuanxiang/StudyNotes-CN/blob/master/Translate/Pandoc-User-Guide-中文版.md)
+如果某个信息不想输入，可以保持空白。详情参考[翻译文档](https://github.com/zhuyuanxiang/StudyNotes-CN/blob/master/Translate/Pandoc-User-Guide-%E4%B8%AD%E6%96%87%E7%89%88.md)
 
 ### Extension: `yaml_metadata_block`
 
@@ -166,8 +166,8 @@ to: html5
 output-file:
 # leave blank for input from stdin, use [] for no input:
 input-files:
-- preface.md
-- content.md
+  - preface.md
+  - content.md
 # or you may use input-file: with a single value
 
 template: letter
@@ -185,25 +185,25 @@ classoption:
 # string text, not markdown:
 metadata:
 author:
-- Sam Smith
-- Julie Liu
+  - Sam Smith
+  - Julie Liu
 metadata-files:
-- boilerplate.yaml
+  - boilerplate.yaml
 # or you may use metadata-file: with a single value
 
 # Note that these take files, not their contents:
 include-before-body: []
 include-after-body: []
 include-in-header: []
-resource-path: ["."]
+resource-path: [.]
 
 # filters will be assumed to be Lua filters if they have
 # the .lua extension, and json filters otherwise. But
 # the filter type can also be specified explicitly, as shown:
 filters:
-- pandoc-citeproc
-- wordcount.lua
-- type: json
+  - pandoc-citeproc
+  - wordcount.lua
+  - type: json
 path: foo.lua
 
 file-scope: false
@@ -222,7 +222,7 @@ abbreviations:
 
 pdf-engine: pdflatex
 pdf-engine-opts:
-- "-shell-escape"
+  - -shell-escape
 # you may also use pdf-engine-opt: with a single option
 # pdf-engine-opt: "-shell-escape"
 
@@ -237,24 +237,24 @@ table-of-contents: true
 toc-depth: 2
 number-sections: false
 # a list of offsets at each heading level
-number-offset: [0,0,0,0,0,0]
+number-offset: [0, 0, 0, 0, 0, 0]
 # toc: may also be used instead of table-of-contents:
 shift-heading-level-by: 1
 section-divs: true
 identifier-prefix: foo
-title-prefix: ""
+title-prefix: ''
 strip-empty-paragraphs: true
 # lf, crlf, or native
 eol: lf
 strip-comments: false
 indented-code-classes: []
 ascii: true
-default-image-extension: ".jpg"
+default-image-extension: .jpg
 
 # either a style name of a style definition file:
 highlight-style: pygments
 syntax-definitions:
-- c.xml
+  - c.xml
 # or you may use syntax-definition: with a single value
 listings: false
 
@@ -264,7 +264,7 @@ reference-doc: myref.docx
 # you may specify a url with webtex, mathjax, katex
 html-math-method:
 method: mathjax
-url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+url: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 # none, references, or javascript
 email-obfuscation: javascript
 
@@ -277,7 +277,7 @@ slide-level: 2
 epub-subdirectory: EPUB
 epub-metadata: meta.xml
 epub-fonts:
-- foobar.otf
+  - foobar.otf
 epub-chapter-level: 1
 epub-cover-image: cover.jpg
 
@@ -291,14 +291,14 @@ track-changes: accept
 
 html-q-tags: false
 css:
-- site.css
+  - site.css
 
 # none, all, or best
 ipynb-output: best
 
 # A list of two-element lists
 request-headers:
-- ["User-Agent", "Mozilla/5.0"]
+  - [User-Agent, Mozilla/5.0]
 
 fail-if-warnings: false
 dump-args: false

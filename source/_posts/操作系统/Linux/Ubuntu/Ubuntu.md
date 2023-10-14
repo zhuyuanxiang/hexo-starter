@@ -1,14 +1,14 @@
 ---
-title: "Ubuntu 学习日志"
-excerpt: "Ubuntu"
+title: Ubuntu 学习日志
+excerpt: Ubuntu
 categories:
-- Ubuntu
+  - Ubuntu
 tags:
-- Ubuntu
-- Python
-- 编程
-- 机器学习
-- Data Science
+  - Ubuntu
+  - Python
+  - 编程
+  - 机器学习
+  - Data Science
 date: 2020-12-06
 updated: 2020-12-07
 toc: true
@@ -101,19 +101,19 @@ deb http://security.ubuntu.com/ubuntu/ groovy multiverse
 ## Install
 
 1. APT 方式
-   1. 普通安装：`apt-get install softname1 softname2 ...`
-   2. 修复安装：`apt-get -f install softname1 softname2 ...`
-   3. 重新安装：`apt-get -reinstall install softname1 softname2 ...`
-2. DPKG 方式
-   1. 普通安装：`dpkg -i package_name.deb`
-3. 源码安装
-   1. 解压文件
-      1. 文件后缀 gz ：`tar zxf xx.tar.gz`
-      2. 文件后缀 Z ：`tar zxf xx.tar.Z`
-      3. 文件后缀 tgz ：`tar zxf xx.tar.tgz`
-      4. 文件后缀 tar ：`tar xf xx.tar`
-      5. 文件后缀 bz2 ：`bunzip2 xx.tar.bz2`
-   2. 编译安装
+    1. 普通安装：`apt-get install softname1 softname2 ...`
+    1. 修复安装：`apt-get -f install softname1 softname2 ...`
+    1. 重新安装：`apt-get -reinstall install softname1 softname2 ...`
+1. DPKG 方式
+    1. 普通安装：`dpkg -i package_name.deb`
+1. 源码安装
+    1. 解压文件
+        1. 文件后缀 gz ：`tar zxf xx.tar.gz`
+        1. 文件后缀 Z ：`tar zxf xx.tar.Z`
+        1. 文件后缀 tgz ：`tar zxf xx.tar.tgz`
+        1. 文件后缀 tar ：`tar xf xx.tar`
+        1. 文件后缀 bz2 ：`bunzip2 xx.tar.bz2`
+    1. 编译安装
 
 ```bash
 ./configure
@@ -124,46 +124,46 @@ sudo make install
 ## Uninstall
 
 1. APT方式
-   1. 移除式卸载：`apt-get remove softname1 softname2 ...` (当包尾部有 `+`时，则为安装)
-   2. 清除式卸载：`apt-get -purge remove softname1 softname2 ...`  (同时清除配置文件)
-   3. 清除式卸载：`apt-get purge softname1 softname2 ...` (同时清除配置文件)
-2. DPKG方式
-   1. 移除式卸载：`dpkg -r pkg1 pkg2 ...`
-   2. 清除式卸载：`dpkg -P pkg1 pkg2 ...`
+    1. 移除式卸载：`apt-get remove softname1 softname2 ...` (当包尾部有 `+`时，则为安装)
+    1. 清除式卸载：`apt-get -purge remove softname1 softname2 ...`  (同时清除配置文件)
+    1. 清除式卸载：`apt-get purge softname1 softname2 ...` (同时清除配置文件)
+1. DPKG方式
+    1. 移除式卸载：`dpkg -r pkg1 pkg2 ...`
+    1. 清除式卸载：`dpkg -P pkg1 pkg2 ...`
 
 ## DPKG Search
 
 1. 查看软件包的状态(支持模糊查询)：`dpkg -l pkgname`
-2. 查看软件包的详细信息：`dpkg -s pkgname`
-3. 查询软件包的相关文件：`dpkg -query -L pkgname`
-4. 查询软件包存储的数据库：数据库为文本文件
-   1. 在`/var/lib/dpkg/status` 文件中存在软件状态、控制信息
-   2. 在 `/var/lib/dpkg/info/`目录下备份控制文件
-      1. 在`.list` 文件中记录安装文件的清单
-      2. 在 `.mdasums` 文件中保存文件的 MD5 编码
+1. 查看软件包的详细信息：`dpkg -s pkgname`
+1. 查询软件包的相关文件：`dpkg -query -L pkgname`
+1. 查询软件包存储的数据库：数据库为文本文件
+    1. 在`/var/lib/dpkg/status` 文件中存在软件状态、控制信息
+    1. 在 `/var/lib/dpkg/info/`目录下备份控制文件
+        1. 在`.list` 文件中记录安装文件的清单
+        1. 在 `.mdasums` 文件中保存文件的 MD5 编码
 
 输出数据的格式说明
 
 1. 第一行描述「期望状态」
-   1. 未知(u)：软件包未安装，用户也未发出安装请求
-   2. 安装(i)：用户请求安装的软件包
-   3. 删除(r)：用户请求卸载的软件包
-   4. 清除(p)：用户请求清除的软件包
-   5. 保持(h)：用户请求锁定版本的软件包
-2. 第二行描述「状态」
-   1. 未安装(n)：
-   2. 已安装(i)：已经安装，并且完成配置
-   3. 仅存配置(c)：安装过，已经卸载，保留了配置文件在系统中
-   4. 仅解压缩(U)：被解压缩，还未配置
-   5. 配置失败(F)：配置软件包的过程失败
-   6. 不完全安装(H)：未成功安装的软件包
-   7. 触发器等待(W)：
-   8. 触发器未决(T)：
-3. 第三行描述「错误」
-   1. 无标识的状态：软件包安装没有问题
-   2. 标识(H)：软件包被强制保持，因为有其他软件包依赖需求，无法升级
-   3. 标识(R)：软件包被破坏，可能需要重新安装才能正常使用
-   4. 标识(X)：软件包被破坏，并且被强制保持
+    1. 未知(u)：软件包未安装，用户也未发出安装请求
+    1. 安装(i)：用户请求安装的软件包
+    1. 删除(r)：用户请求卸载的软件包
+    1. 清除(p)：用户请求清除的软件包
+    1. 保持(h)：用户请求锁定版本的软件包
+1. 第二行描述「状态」
+    1. 未安装(n)：
+    1. 已安装(i)：已经安装，并且完成配置
+    1. 仅存配置(c)：安装过，已经卸载，保留了配置文件在系统中
+    1. 仅解压缩(U)：被解压缩，还未配置
+    1. 配置失败(F)：配置软件包的过程失败
+    1. 不完全安装(H)：未成功安装的软件包
+    1. 触发器等待(W)：
+    1. 触发器未决(T)：
+1. 第三行描述「错误」
+    1. 无标识的状态：软件包安装没有问题
+    1. 标识(H)：软件包被强制保持，因为有其他软件包依赖需求，无法升级
+    1. 标识(R)：软件包被破坏，可能需要重新安装才能正常使用
+    1. 标识(X)：软件包被破坏，并且被强制保持
 
 ## Others
 

@@ -1,6 +1,6 @@
 ---
 title: Scikit-Learn学习笔记
-excerpt: ""
+excerpt: ''
 categories:
   - 编程
 tags:
@@ -21,6 +21,7 @@ toc_sticky: true
 
 ```python
 from sklearn.datasets import fetch_lfw_people
+
 faces = fetch_lfw_people()
 ```
 

@@ -1,14 +1,14 @@
 ---
-title: "Ubuntu Remote Services"
-excerpt: "Ubuntu"
+title: Ubuntu Remote Services
+excerpt: Ubuntu
 categories:
-- Ubuntu
+  - Ubuntu
 tags:
-- Ubuntu
-- SSHD
-- xRDP
-- Remote Services
-- Remote Connect
+  - Ubuntu
+  - SSHD
+  - xRDP
+  - Remote Services
+  - Remote Connect
 date: 2022-04-27
 updated: 2022-04-27
 toc: true
@@ -57,11 +57,14 @@ service ssh restart
 ### Add ssh Key
 
 1. 制作密钥对：`ssh-keygen`
-2. 在服务器上安装公钥：`cat id_rsa.pub >> ~/.ssh/authorized_keys`
+
+1. 在服务器上安装公钥：`cat id_rsa.pub >> ~/.ssh/authorized_keys`
+
     1. 文件 `id_rsa.pub` 所在目录 `~/.ssh/`
-    2. 目录权限：`chmod 700 ~/.ssh`
-    3. 文件权限：`chmod 600 authorized_keys`
-3. 编辑配置文件：`/etc/ssh/sshd_config`
+    1. 目录权限：`chmod 700 ~/.ssh`
+    1. 文件权限：`chmod 600 authorized_keys`
+
+1. 编辑配置文件：`/etc/ssh/sshd_config`
 
     ```text
     RSAAuthentication yes
@@ -72,9 +75,11 @@ service ssh restart
     PasswordAuthentication no
     ```
 
-4. 重启SSH服务：`service sshd restart`
-5. 将私钥文件下载到客户端
-6. VSCode 直接访问 `~/.ssh/`目录
+1. 重启SSH服务：`service sshd restart`
+
+1. 将私钥文件下载到客户端
+
+1. VSCode 直接访问 `~/.ssh/`目录
 
 ## Vino-Serv
 
@@ -114,7 +119,7 @@ vino-serv 4308 zfb   12u  IPv4 12350286      0t0  TCP *:5900 (LISTEN)
 如果使用的就是UBUNTU桌面版，则此步忽略。
 
 1. 安装Gnome，它是UBUNTU 20.04 的默认桌面环境
-2. 安装Xfce，它是快速、稳定、轻量级桌面环境
+1. 安装Xfce，它是快速、稳定、轻量级桌面环境
 
 ```bash
 sudo apt update
@@ -231,10 +236,10 @@ chmod u+x ~/.vnc/xstartup
 
 服务器比较
 
-|      | vino-server                      | xRDP                                     | vnc-server                          |
-| ---- | -------------------------------- | ---------------------------------------- | ----------------------------------- |
-| 优点 | 系统自带，配置简单               | 配置简单，可用windows自带的远程桌面登录  | 配置简单,但不一定能成功连接远程桌面 |
-| 缺点 | 重启后必须登录个人桌面后才可启动 | root用户登陆不容易出错，普通用户容易出错 | 出错不好解决                        |
+|     | vino-server      | xRDP                    | vnc-server         |
+| --- | ---------------- | ----------------------- | ------------------ |
+| 优点  | 系统自带，配置简单        | 配置简单，可用windows自带的远程桌面登录 | 配置简单,但不一定能成功连接远程桌面 |
+| 缺点  | 重启后必须登录个人桌面后才可启动 | root用户登陆不容易出错，普通用户容易出错  | 出错不好解决             |
 
 注：建议`vino-server`+`Xrdp`。因为`Xrdp`容易出错，出错后使用`vino-server`登录上去修补一下。`vino-server`使用过程中比较消耗资源。
 
@@ -276,8 +281,6 @@ export XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
 
 sudo systemctl restart xrdp.service	# 重启服务
 ```
-
-
 
 ## TigerVNC
 
@@ -347,7 +350,7 @@ ResultActive=yes
 
     进入并且关闭“org->gnome->desktop->remote access->require encryption”
 
-2. SSH登录的系统无法使用vnc viewer登录
+1. SSH登录的系统无法使用vnc viewer登录
 
     必须在服务器跟前登录桌面后才可以使用。
 
@@ -355,23 +358,23 @@ ResultActive=yes
 
     1. 查看当前的桌面管理器
 
-        ```bash
-        cat /etc/X11/default-display-manager
-        ```
+    ```bash
+    cat /etc/X11/default-display-manager
+    ```
 
-    2. 编辑文件中指定的桌面管理器，例如：/usr/sbin/gdm3，就使用下列指令更改
+    1. 编辑文件中指定的桌面管理器，例如：/usr/sbin/gdm3，就使用下列指令更改
 
-        ```bash
-        sudo vim /etc/gdm3/custom.conf
-        ```
+    ```bash
+    sudo vim /etc/gdm3/custom.conf
+    ```
 
-        修改下面三行内容
+    修改下面三行内容
 
-        ```bash
-        WaylandEnable=false
-        AutomaticLoginEnable=true
-        AutomaticLogin=user1  # 这个是自己的用户名
-        ```
+    ```bash
+    WaylandEnable=false
+    AutomaticLoginEnable=true
+    AutomaticLogin=user1  # 这个是自己的用户名
+    ```
 
 ## References
 
@@ -382,4 +385,3 @@ ResultActive=yes
 [完美方案——解决XRDP连接黑屏，以及桌面优化！](https://zhuanlan.zhihu.com/p/519648451)
 
 [gnome - (xRDP) Desktop looks different when connecting remotely - Ask Ubuntu](https://askubuntu.com/questions/1233088/xrdp-desktop-looks-different-when-connecting-remotely)
-

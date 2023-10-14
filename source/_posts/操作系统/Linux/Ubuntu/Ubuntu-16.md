@@ -1,17 +1,18 @@
 ---
-title: "Ubuntu 16使用指南"
-excerpt: "Ubuntu 16使用指南"
+title: Ubuntu 16使用指南
+excerpt: Ubuntu 16使用指南
 categories:
-- Ubuntu
+  - Ubuntu
 tags:
-- Ubuntu
-- ZSH
-- Shell
+  - Ubuntu
+  - ZSH
+  - Shell
 date: 2022-04-18
 updated: 2022-04-18
 toc: true
 toc_sticky: true
 ---
+
 # 总览
 
 ## 安装
@@ -125,6 +126,6 @@ sudo apt-get purge ubuntu-advantage-tools --autoremove
 ## 参考资料
 
 1. [upgrade - ESM 401 Unauthorized error on Ubuntu 16.04 - Ask Ubuntu](https://askubuntu.com/questions/1371293/esm-401-unauthorized-error-on-ubuntu-16-04)
-2. [我的ubuntu连vi都没有？？那在命令行怎么编辑文件？？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/67066631)[我的ubuntu连vi都没有？？那在命令行怎么编辑文件？？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/67066631)
-3. [(61条消息) 简单解决Docker中的镜像没有vim的问题（同时解决apt-get下载很慢的问题，原始的echo写入国内的源）_docker nginx 缺少vim_一只有点酸的程序员的博客-CSDN博客](https://blog.csdn.net/weixin_44598727/article/details/108300731)
-4. [(61条消息) Ubuntu apt-get彻底卸载软件包_apt彻底卸载_享学IT的博客-CSDN博客](https://blog.csdn.net/get_set/article/details/51276609)[(61条消息) Ubuntu apt-get彻底卸载软件包_apt彻底卸载_享学IT的博客-CSDN博客](https://blog.csdn.net/get_set/article/details/51276609)
+1. [我的ubuntu连vi都没有？？那在命令行怎么编辑文件？？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/67066631)[我的ubuntu连vi都没有？？那在命令行怎么编辑文件？？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/67066631)
+1. [(61条消息) 简单解决Docker中的镜像没有vim的问题（同时解决apt-get下载很慢的问题，原始的echo写入国内的源）_docker nginx 缺少vim_一只有点酸的程序员的博客-CSDN博客](https://blog.csdn.net/weixin_44598727/article/details/108300731)
+1. [(61条消息) Ubuntu apt-get彻底卸载软件包_apt彻底卸载_享学IT的博客-CSDN博客](https://blog.csdn.net/get_set/article/details/51276609)[(61条消息) Ubuntu apt-get彻底卸载软件包_apt彻底卸载_享学IT的博客-CSDN博客](https://blog.csdn.net/get_set/article/details/51276609)

@@ -1,12 +1,12 @@
 ---
-title: "自学 Python 读过的书总结"
-excerpt: "个人的感受，非理性的认知"
+title: 自学 Python 读过的书总结
+excerpt: 个人的感受，非理性的认知
 categories:
-- 阅读
+  - 阅读
 tags:
-- Python
-- 感受
-- 结论
+  - Python
+  - 感受
+  - 结论
 date: 2019-02-18
 updated: 2019-03-08
 toc: true
@@ -43,7 +43,7 @@ toc: true
 
 ## 《Python 数据科学实践指南》 ★★★
 
- [《Python 数据科学实践指南》](https://zhuyuanxiang.github.io/coding/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-Python%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/)主要是一本 Python 及数据科学相关模块介绍的书，更符合学习 Python 使用。
+[《Python 数据科学实践指南》](https://zhuyuanxiang.github.io/coding/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-Python%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/)主要是一本 Python 及数据科学相关模块介绍的书，更符合学习 Python 使用。
 
 ## 《Python 机器学习基础教程》 ★★★★
 

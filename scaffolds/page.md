@@ -1,11 +1,11 @@
 ---
-title: {{ title }}
-description: {{ description }}
-date: {{ date }}
-updated: {{ updated }}
+title: {{title: null}: null}
+description: {{description: null}: null}
+date: {{date: null}: null}
+updated: {{updated: null}: null}
 mathjax: false
 categories:
-- Reading
+  - Reading
 tags:
-- Code
+  - Code
 ---

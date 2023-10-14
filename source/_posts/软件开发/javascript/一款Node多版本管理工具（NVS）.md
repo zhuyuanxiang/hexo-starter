@@ -1,6 +1,4 @@
-
-
-![](pics/一款Node多版本管理工具（NVS）/v2-13befc89dbaccb895e7688645b13882d_720w.webp)
+![](pics/%E4%B8%80%E6%AC%BENode%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%88NVS%EF%BC%89/v2-13befc89dbaccb895e7688645b13882d_720w.webp)
 
 ## **0. 仓库地址**
 
@@ -18,7 +16,7 @@ NVS(Node Version Switcher)是一个跨平台的工具，用于在Node.js的不�
 
 这个工具显然受到了其他节点版本管理器工具的启发，尤其是nvm，它借鉴了nvm的许多思想和一些命令行语法。
 
-![](pics/一款Node多版本管理工具（NVS）/v2-e413bd62fb4c1c3c2972519dd1041904_720w.webp)
+![](pics/%E4%B8%80%E6%AC%BENode%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%88NVS%EF%BC%89/v2-e413bd62fb4c1c3c2972519dd1041904_720w.webp)
 
 ## **3. nvs安装**
 
@@ -40,7 +38,7 @@ choco install nvs
 
 **[Releases](https://link.zhihu.com/?target=https%3A//github.com/jasongin/nvs/releases)**
 
-![](pics/一款Node多版本管理工具（NVS）/v2-93d8ab8915e1cadbc9fd8696d0f9f9ca_720w.webp)
+![](pics/%E4%B8%80%E6%AC%BENode%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%88NVS%EF%BC%89/v2-93d8ab8915e1cadbc9fd8696d0f9f9ca_720w.webp)
 
 ### **3.2 Mac和Linux**
 
@@ -82,27 +80,27 @@ nvs link lts
 
 ## **5. nvs命令手册**
 
-|Command|Description|
-|---|---|
-|nvs help <command>|获取帮助|
-|nvs install|初始化nvs配置|
-|nvs uninstall|从环境变量删除nvs|
-|nvs --version|显示nvs的版本|
-|nvs add [version]|下载安装某个版本的Node.js|
-|nvs rm <version>|删除某个版本的Node.js|
-|nvs migrate <fromver> [tover]|迁移全局模块|
-|nvs upgrade [fromver]|升级到主版本的最新补丁|
-|nvs use [version]|在当前shell中使用某个版本的Node.js|
-|nvs auto [on/off]|根据cwd（当前工作路径）自动切换Node.js版本|
-|nvs run <ver> <js> [args...]|使用某个版本的Node.js运行js脚本|
-|nvs exec <ver> <exe> [args...]|使用某个版本的Node.js运行可执行文件|
-|nvs which [version]|显示某个版本的Node.js二进制文件的路径|
-|nvs ls [filter]|显示本地已安装的Node.js列表|
-|nvs ls-remote [filter]|显示远端可安装的Node.js列表|
-|nvs link [version]|链接一个默认版本|
-|nvs unlink [version]|删除指向默认版本的链接|
-|nvs alias [name] [value]|设置或收回版本的别名|
-|nvs remote [name] [value]|设置或收回下载基础uri|
+| Command                        | Description                |
+| ------------------------------ | -------------------------- |
+| nvs help <command>             | 获取帮助                       |
+| nvs install                    | 初始化nvs配置                   |
+| nvs uninstall                  | 从环境变量删除nvs                 |
+| nvs --version                  | 显示nvs的版本                   |
+| nvs add [version]              | 下载安装某个版本的Node.js           |
+| nvs rm <version>               | 删除某个版本的Node.js             |
+| nvs migrate <fromver> [tover]  | 迁移全局模块                     |
+| nvs upgrade [fromver]          | 升级到主版本的最新补丁                |
+| nvs use [version]              | 在当前shell中使用某个版本的Node.js    |
+| nvs auto [on/off]              | 根据cwd（当前工作路径）自动切换Node.js版本 |
+| nvs run <ver> <js> [args...]   | 使用某个版本的Node.js运行js脚本       |
+| nvs exec <ver> <exe> [args...] | 使用某个版本的Node.js运行可执行文件      |
+| nvs which [version]            | 显示某个版本的Node.js二进制文件的路径     |
+| nvs ls [filter]                | 显示本地已安装的Node.js列表          |
+| nvs ls-remote [filter]         | 显示远端可安装的Node.js列表          |
+| nvs link [version]             | 链接一个默认版本                   |
+| nvs unlink [version]           | 删除指向默认版本的链接                |
+| nvs alias [name] [value]       | 设置或收回版本的别名                 |
+| nvs remote [name] [value]      | 设置或收回下载基础uri               |
 
 一个具体版本或者版本过滤词由一个完整的或者部分的语义版本号或者版本标签（"lts", "latest", "Argon"等）组成，也可以是远端的版本名称，或者使用斜杠分隔来指定架构版本。例如："lts", "4.6.0", "6/x86", "node/6.7/x64"等。
 

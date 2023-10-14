@@ -2,11 +2,11 @@
 title: PyCharm学习关键点总结
 excerpt: 学习过程中使用 PyCharm 的一些经验，PyCharm 常用的一些插件。
 categories:
-- 编程
+  - 编程
 tags:
-- PyCharm
-- 插件
-- 编程
+  - PyCharm
+  - 插件
+  - 编程
 date: 2019-12-29
 updated: 2020-07-21
 toc: true
@@ -25,9 +25,9 @@ toc_sticky: true
 - TabNine : 基于机器学习的方法，支持所有语言的自动完成，极大地加速输入代码的速度。
 - TeXiFy IDEA : 支持 LaTeX 和 BibTeX 的。
 - Database Browser : 对多种数据库操作
-  - MySQL 8.0 加入对 UTC 支持后，连接会出错，可以使用 Custom 方式输入连接串，在连接串的最后加入 `?serverTimezone=UTC` 即可
-    - 完整连接串：`jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC `
-  - 插件支持：数据库连接，数据导出，SQL文件中直接执行SQL命令
+    - MySQL 8.0 加入对 UTC 支持后，连接会出错，可以使用 Custom 方式输入连接串，在连接串的最后加入 `?serverTimezone=UTC` 即可
+        - 完整连接串：`jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC `
+    - 插件支持：数据库连接，数据导出，SQL文件中直接执行SQL命令
 
 ## Console Startup
 
@@ -40,20 +40,20 @@ File → Settings → File and Code Templates → Python Script
 
 PyCharm 中的文件模版变量 :
 
-- ${PROJECT_NAME} - 当前的项目名
-- ${PRODUCT_NAME} - IDE 的名称
-- ${NAME} - 在文件创建过程中，新文件对话框的命名
-- ${USER} - 当前的登录用户
-- ${DATE} - 现在的系统日期
-- ${TIME} - 现在的系统时间
-- ${YEAR} - 当前年份
-- ${MONTH} - 当前月份
-- ${DAY} - 当前月份中的第几日
-- ${HOUR} - 现在的小时
-- ${MINUTE} - 现在的分钟
-- ${FILE} - 文件的名称
-- ${MONTH_NAME_SHORT} - 月份的前三个字母缩写
-- ${MONTH_NAME_FULL} - 完整的月份名
+- \$\{PROJECT_NAME} - 当前的项目名
+- \$\{PRODUCT_NAME} - IDE 的名称
+- \$\{NAME} - 在文件创建过程中，新文件对话框的命名
+- \$\{USER} - 当前的登录用户
+- \$\{DATE} - 现在的系统日期
+- \$\{TIME} - 现在的系统时间
+- \$\{YEAR} - 当前年份
+- \$\{MONTH} - 当前月份
+- \$\{DAY} - 当前月份中的第几日
+- \$\{HOUR} - 现在的小时
+- \$\{MINUTE} - 现在的分钟
+- \$\{FILE} - 文件的名称
+- \$\{MONTH_NAME_SHORT} - 月份的前三个字母缩写
+- \$\{MONTH_NAME_FULL} - 完整的月份名
 
 ## Errors
 
@@ -62,9 +62,9 @@ PyCharm 中的文件模版变量 :
 这个是 PyCharm 的 BUG，解决办法
 
 - Settings: `File > Settings > Build, Execution, Deployment > Console`，取消 `Use IPython if available` 的设置
-  - 不过 IPython 很好用，建议不取消
+    - 不过 IPython 很好用，建议不取消
 - Settings: `File----> Settings---->Editor---->General---->Code Completion`，取消 `Rank completion suggestions based on Machine Learning`
-  - 虽然使用更先进的代码提示很诱人，但是这个问题也比较麻烦，建议取消
+    - 虽然使用更先进的代码提示很诱人，但是这个问题也比较麻烦，建议取消
 
 ## PyCharm 注册
 
@@ -72,7 +72,7 @@ PyCharm 中的文件模版变量 :
 
 ### Ubuntu
 
-修改 `snap` 目录下的文件，遇到错误“只读文件，没有权限”。使用 `chmod` 不能修改其权限。 
+修改 `snap` 目录下的文件，遇到错误“只读文件，没有权限”。使用 `chmod` 不能修改其权限。
 
 ```shell
 chmod 777 pycharm64.vmoptions

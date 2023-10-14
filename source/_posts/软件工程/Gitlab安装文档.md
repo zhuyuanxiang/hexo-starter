@@ -12,6 +12,7 @@ updated: 2022-04-18
 toc: true
 toc_sticky: true
 ---
+
 # 总览
 
 ## 安装
@@ -106,15 +107,15 @@ postgres_exporter['enable'] = false
 pgbouncer_exporter['enable'] = false
 gitlab_exporter['enable'] = false
 grafana['enable'] = false
-sidekiq['metrics_enabled'] = false        
+sidekiq['metrics_enabled'] = false
 ```
 
 ## 参考资料
 
 1. [Upgrading GitLab | GitLab](https://docs.gitlab.com/ee/update/)
-2. [Gitlab备份、迁移、恢复和升级 - SSgeek - 博客园 (cnblogs.com)](https://www.cnblogs.com/ssgeek/p/9392104.html)
-3. [记一次 GitLab 的迁移过程 - 程序员自由之路 - 博客园 (cnblogs.com)](https://www.cnblogs.com/54chensongxia/p/14964465.html)
-4. [(61条消息) 关于Gitlab10迁移用户_gitlab迁移用户_moxiaomomo的博客-CSDN博客](https://blog.csdn.net/moxiaomomo/article/details/83412173)
-5. [(61条消息) 项目源代码迁移到另一个gitlab的方法(保留原来的提交记录)_gitlab迁移项目_拒绝冗余的博客-CSDN博客](https://blog.csdn.net/qq_42887496/article/details/124304243)
-6. [Download and install GitLab | GitLab](https://about.gitlab.com/install/#ubuntu)
-7. [GitLab 14 轻量化运行方案](https://soulteary.com/2021/07/14/gitlab-14-lightweight-operation-solution.html)
+1. [Gitlab备份、迁移、恢复和升级 - SSgeek - 博客园 (cnblogs.com)](https://www.cnblogs.com/ssgeek/p/9392104.html)
+1. [记一次 GitLab 的迁移过程 - 程序员自由之路 - 博客园 (cnblogs.com)](https://www.cnblogs.com/54chensongxia/p/14964465.html)
+1. [(61条消息) 关于Gitlab10迁移用户_gitlab迁移用户_moxiaomomo的博客-CSDN博客](https://blog.csdn.net/moxiaomomo/article/details/83412173)
+1. [(61条消息) 项目源代码迁移到另一个gitlab的方法(保留原来的提交记录)_gitlab迁移项目_拒绝冗余的博客-CSDN博客](https://blog.csdn.net/qq_42887496/article/details/124304243)
+1. [Download and install GitLab | GitLab](https://about.gitlab.com/install/#ubuntu)
+1. [GitLab 14 轻量化运行方案](https://soulteary.com/2021/07/14/gitlab-14-lightweight-operation-solution.html)

@@ -1,10 +1,10 @@
 ---
-title: "Windows 7 学习日志"
-excerpt: "学习过程中使用 Windows 7 的一些经验"
+title: Windows 7 学习日志
+excerpt: 学习过程中使用 Windows 7 的一些经验
 categories:
-- 技巧
+  - 技巧
 tags:
-- Windows
+  - Windows
 date: 2019-01-15
 updated: 2019-01-15
 ---

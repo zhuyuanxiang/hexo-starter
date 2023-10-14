@@ -1,22 +1,23 @@
 ---
-title: "Linux 版本对比"
-excerpt: "Linux 不同版本性能与用途对比"
+title: Linux 版本对比
+excerpt: Linux 不同版本性能与用途对比
 categories:
-- OS
+  - OS
 tags:
-- Ubuntu
-- Debian
-- CentOS
-- Red Hat
-- RHEL
-- openSUSE
-- Fedora
-- Deepin
+  - Ubuntu
+  - Debian
+  - CentOS
+  - Red Hat
+  - RHEL
+  - openSUSE
+  - Fedora
+  - Deepin
 date: 2022-04-18
 updated: 2022-04-18
 toc: true
 toc_sticky: true
 ---
+
 # 总览
 
 ## Deepin
