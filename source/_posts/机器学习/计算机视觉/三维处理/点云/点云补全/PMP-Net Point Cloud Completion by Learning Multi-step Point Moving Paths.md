@@ -29,7 +29,7 @@ Wen X, Xiang P, Han Z, et al. Pmp-net: Point cloud completion by learning multi-
 
 ![image-20231118173925463](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%B8%89%E7%BB%B4%E5%A4%84%E7%90%86/%E7%82%B9%E4%BA%91/%E7%82%B9%E4%BA%91%E8%A1%A5%E5%85%A8/images/PMP-Net%20Point%20Cloud%20Completion%20by%20Learning%20Multi-step%20Point%20Moving%20Paths/image-20231118173925463.png)
 
-图1. 多步骤点云变形的补全。点移动路径用灰色线表示。在每一步中，原始点云使用橙色表示，目标点云使用黄色表示。
+图1：多步骤点云变形的补全。点移动路径用灰色线表示。在每一步中，原始点云使用橙色表示，目标点云使用黄色表示。
 
 # Ch01 介绍
 
@@ -59,4 +59,123 @@ Wen X, Xiang P, Han Z, et al. Pmp-net: Point cloud completion by learning multi-
 
 ![image-20231118174210764](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%B8%89%E7%BB%B4%E5%A4%84%E7%90%86/%E7%82%B9%E4%BA%91/%E7%82%B9%E4%BA%91%E8%A1%A5%E5%85%A8/images/PMP-Net%20Point%20Cloud%20Completion%20by%20Learning%20Multi-step%20Point%20Moving%20Paths/image-20231118174210764.png)
 
-图2. 从粗到细的搜索半径下使用多步骤路径搜索。PMP-Net将点A移动到A’需要通过三个步骤，每一步都减小其搜索半径，并且回顾移动历史，以决定下一个需要移动的位置。
+图2：从粗到细的搜索半径下使用多步骤路径搜索。PMP-Net将点A移动到A’需要通过三个步骤，每一步都减小其搜索半径，并且回顾移动历史，以决定下一个需要移动的位置。
+
+# Ch03 PMP-Net的架构
+
+## 3.1. 点位移预测
+
+### 多步骤架构
+
+提出的PMP-Net的概念如图3(a)所示，在给定输入点云$P=\{\mathbf{p}_i\}$和目标点云$P'=\{\mathbf{p}'_i\}$时，PMP-Net的目标是预测一个位移向量集$\Delta P=\{\Delta\mathbf{p}_i\}$，该向量集将$P$中的每个点通过三步移动到$P'$中的位置上，即：$\{(\mathbf{p}_i+\Delta\mathbf{p}_i)\}=\{\mathbf{p}'_j\}$，其中第$k$步的位移向量记为$\Delta\mathbf{p}_i^k$，得$\Delta\mathbf{p}_i=\sum_{k=1}^3\Delta\mathbf{p}_i^k$。对于步骤$k$，网络将第$k-1$步的变形点云$\{\mathbf{p}_i^{k-1}\}=\{\mathbf{p}_i+\sum_{j=1}^{k-1}\Delta\mathbf{p}_i^j\}$作为输入点云，并且依据其计算新的位移向量。因此，预测的形状将一步步地细化，最终产生一个高质量的补全形状。
+
+### 位移向量预测
+
+在第$k$步时，为了预测每个点的位移向量$\Delta\mathbf{p}_i^k$，我们首先从点云中提取每个点的特征。这种特征是由PointNet++[^27]的基本框架从输入的三维形状的全局特征中提取的，然后使用特征传播模块在三维空间中将全局特征传播到每个点，并且最终为每个点$\mathbf{p}_i^k$生成特征$\mathbf{h}_i^{k,l}$。由于我们的实验实现了将特征传播的三个层次应用到了分层次生成每个点的特征（见图3(b)）$\mathbf{h}_i^{k,l}$，其中上标$k$表示步骤、下标$l$表示层次。然后每个点的特征$\mathbf{h}_i^{k,l}$与随机噪声向量$\hat{x}$拼接起来，从而给每个点一个很小的扰动从而迫使它们离开原始的位置[^45]。然后，最终点特征$\mathbf{h}_i^{k,3}$在第$k$步第3层送入其后的多层感知机（MLP）及一个$\tanh$激活函数，输出一个三维向量作为点$\mathbf{p}_i^k$的位移向量$\Delta\mathbf{p}_i^k$：
+$$
+\begin{equation}
+\Delta\mathbf{p}_i^k=\tanh(MLP([\mathbf{h}_i^{k,3}:\hat{x}]))
+\end{equation}
+$$
+其中的冒号‘:’表示拼接操作。
+
+![image-20231120105642004](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%B8%89%E7%BB%B4%E5%A4%84%E7%90%86/%E7%82%B9%E4%BA%91/%E7%82%B9%E4%BA%91%E8%A1%A5%E5%85%A8/images/PMP-Net%20Point%20Cloud%20Completion%20by%20Learning%20Multi-step%20Point%20Moving%20Paths/image-20231120105642004.png)
+
+图3：基于从粗到细的搜索半径实现的多步骤路径搜索。PMP-Net通过三步将点$A$移动$A'$，每一步都减少搜索半径，回顾移动历史，决定下一个要移动的位置。
+
+### 各步骤之间的循环信息流
+
+前面的移动信息对于网络决定当前的移动是至关重要的，因为前面的路径可以用来推断单个点的最终位置。因此，这些信息可以引导网络找到下一步移动的方向和距离，防止网络在点移动路径搜索的多个步骤中改变了最终目的。为了满足这个要求，我们提出了在特征传播模块的每一步和每一层都使用特定RPA单元，这个模块可以记忆先前路径的信息，并且可以用于推导每个点的下个位置。$RPA$模块在（$k$步、$l$层）的输入是第$i-1$层的输出，并将之与第$k-1$步得到的特征$\mathbf{h}_i^{k,l-1}$混合，从而在相同的$l$层输出当前层的特征$\mathbf{h}_i^{k,l}$：
+$$
+\begin{equation}
+\mathbf{h}_i^{k,l}=RPA(\mathbf{f}_i^{k,l-1},\mathbf{h}_i^{k-1,l})
+\end{equation}
+$$
+其中，$RPA$模块的细节参见上述。
+
+![image-20231120175828866](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%B8%89%E7%BB%B4%E5%A4%84%E7%90%86/%E7%82%B9%E4%BA%91/%E7%82%B9%E4%BA%91%E8%A1%A5%E5%85%A8/images/PMP-Net%20Point%20Cloud%20Completion%20by%20Learning%20Multi-step%20Point%20Moving%20Paths/image-20231120175828866.png)
+
+图4：RPA模块在第$k$步、第$l$层的结构细节
+
+## 3.2. 循环路径聚合
+
+点移动的先前路径可以看作为序列数据，其中包含的每次移动的信息将在此过程中被选择性地记住或者忘记。遵循这个理念，我们利用递归神经网络提供的灵感，模仿了门循环单元（GRU）的行为，计算更新门$z$和重置门$r$从而编码和遗忘信息，这是依据第$k-1$的点特征$\mathbf{h}_i^{k-1,l}$和第$k$步的点特征$\mathbf{h}_i^{k,l-1}$实现的。两个门计算的形式化公式如下：
+$$
+\begin{equation}
+z=\sigma(W_z[\mathbf{f}_i^{k,l-1}:\mathbf{h}_i^{k-1,l}]+\mathbf{b}_z)
+\end{equation}
+$$
+
+$$
+\begin{equation}
+r=\sigma(W_r[\mathbf{f}_i^{k,l-1}:\mathbf{h}_i^{k-1,l}]+\mathbf{b}_r)
+\end{equation}
+$$
+
+其中，$W_z,W_r$是权重矩阵，$\mathbf{b}_z,\mathbf{b}_r$是偏差。$\sigma$是$\text{sigmoid}$激活函数，用于预测一个0到1之间的值，表示允许通过门的信息的比率。冒号‘:’表示两个特征的拼接。
+
+与标准的GRU不同的是，RPA在计算输出特征$\mathbf{h}_i^{k,l}$时，强调的是保存先前的信息更为重要，因此我们解决了在当前输入信息中保存更多重要性的问题，并且提出了计算输出特征$\mathbf{h}_i^{k,l}$的公式：
+$$
+\begin{equation}
+\mathbf{h}_i^{k,l}=z\odot\hat{\mathbf{h}}_i^{k,l}+(1-z)\odot\mathbf{f}_i^{k,l-1}
+\end{equation}
+$$
+其中，$\hat{\mathbf{h}}_i^{k,l}$是当前步骤的中间特征。公式包含了过去路径的保留信息，并且是根据当前的输入特征计算得到的，其计算公式为：
+$$
+\begin{equation}
+\hat{\mathbf{h}}_i^{k,l}=\varphi(W_h[r\odot\mathbf{h}_i^{k-1,l}:\mathbf{f}_i^{k,l-1}+\mathbf{b}_h])
+\end{equation}
+$$
+其中，$\varphi$在我们的实现中是$\text{relu}$激活函数。
+
+使用$\hat{\mathbf{h}}_i^{k,l}$与$\mathbf{f}_i^{k,l-1}$的融合特征，而不是$\mathbf{h}_i^{k-1,l}$是因为相比RNN中的标准单元，当前点的位置对下次移动的决策影响力更大一些。特别是，当RPA模块需要忽略在当前决策中并不重要的先前信息时，因此等式(5)可以通过简单地将更新门$z$置为零向量就能忘记所有的历史，从而使得RPA模块完全关注当前输入$\mathbf{f}_i^{k,l-1}$里的信息。
+
+## 3.3. 唯一路径的优化搜索
+
+### 最小化移动距离
+
+如图5所示，点云的无序性允许在输入形状变形为目标形状时出现多个解，并且在变形后的形状上的直接约束（如：倒角距离）和其基准数据无法保证输入点集与目标点集之间建立的对应关系的唯一性。否则，网络就会被点移动的多个解所混淆，这可能导致无法捕捉不完整形状和补全后的形状之间的拓扑细节与结构关系。为了在输入点云和目标点云之间建立唯一的和有意义的点对应关系，我们受到地动距离[^28]的启发，提出了训练PMP-Net在源点云和目标点云之间，基于所有点的移动距离约束，学习路径规划$\phi$。具体来说，给定源点云$\hat{X}=\{\hat{x}_i|i=1,2,3,\dots,N\}$和目标点云$X=\{x_i|i=1,2,3\dots,N\}$，我们遵循EMD约束来学习$\phi$：
+$$
+\begin{equation}
+\mathcal{L}(\hat{X},X)=\min_{\phi:\hat{X}\rightarrow X}\frac1{\hat{X}}\|\hat{x}-\phi(\hat{X})\|
+\end{equation}
+$$
+在等式(7)中，$\phi$被看作双向函数，用于最小化$\hat{X}$与$X$之间的对应点的平均距离。
+
+![image-20231120175929044](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%B8%89%E7%BB%B4%E5%A4%84%E7%90%86/%E7%82%B9%E4%BA%91/%E7%82%B9%E4%BA%91%E8%A1%A5%E5%85%A8/images/PMP-Net%20Point%20Cloud%20Completion%20by%20Learning%20Multi-step%20Point%20Moving%20Paths/image-20231120175929044.png)
+
+图5：将输入点云（绿色）变形为目标点云（红色）时多个解的情况描述。PMD约束保证了输入点云与目标点云之间的点级对应关系的唯一性（见图5a），并且过滤了移动点的各种冗余解（见图5b）
+
+根据等式(7)可知，双射函数$\phi$是通过网络最小化移动距离时获得的，移动距离是从输入形状到目标形状移动点时产生的。然而，即使输入点云与目标点云之间的对应关系是唯一的，实现两个点云的对应关系的移动路径并不唯一（见图6）。因此，为了鼓励网络学习得到一个最优的点移动路径，我们选择最小化点移动距离损失函数（$\mathcal{L}_{PMD}$），即所有位移向量$\{\Delta\mathbf{p}_i^k\}$的和，这些位移向量是由PMP-Net的三个步骤产生的。点移动距离损失函数的公式如下：
+$$
+\begin{equation}
+\mathcal{L}=\sum_k\sum_i\|\Delta p_i^k\|_2
+\end{equation}
+$$
+等式(8)比EMD的约束更加严格。它不仅要求所有点的整体位移达到最短距离，而且还限制了每一步中点的移动路径必须最短。因此，在每一步中，都会鼓励网络按照之前的方向搜索新的路径（见图6），这将减少冗余的移动决策，提高搜索效率。
+
+![image-20231120180259026](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%B8%89%E7%BB%B4%E5%A4%84%E7%90%86/%E7%82%B9%E4%BA%91/%E7%82%B9%E4%BA%91%E8%A1%A5%E5%85%A8/images/PMP-Net%20Point%20Cloud%20Completion%20by%20Learning%20Multi-step%20Point%20Moving%20Paths/image-20231120180259026.png)
+
+图6：$\mathcal{L}_{PMD}$的有效性的描述。通过最小化点移动距离，鼓励网络从源到目标的过程中学习得到更加一致的路径，从而减少每一步的冗余搜索，提高效率
+
+### 多尺度搜索半径
+
+PMP-Net以从粗到细的方式搜索点移动路径，并且每一步都以10的幂来减少移动点的最大步进，即第$k$步位移$\Delta\mathbf{p}_i^k$在公式(1)的计算机结果限制为$10^{-k+1}\Delta\mathbf{p}_{i}^k$，这使得网络在训练期间能够更快地收敛。同时，减少的搜索范围将保证网络在下一步不会推翻其在上一步中做出的决定，特别是对于远程移动。因此，可以防止网络在路径搜索过程中做出的冗余决策。
+
+## 3.4. 训练损失函数
+
+通过倒角距离（Chamfer Distance, CD）和地动距离（Earth Mover Distance, EMD）将完整的基准点云正则化为变形后的形状。遵循等式(7)中的符号，倒角距离定义如下：
+$$
+\begin{equation}
+\mathcal{L}_{CD}(X,\hat{X})=
+\sum_{x\in X}\min_{\hat{x}\in\hat{X}}\|x-\hat{x}\|+
+\sum_{\hat{x}\in\hat{X}}\min_{x\in X}\|\hat{x}-x\|
+\end{equation}
+$$
+完整的损失函数定义如下：
+$$
+\begin{equation}
+\mathcal{L}=\sum_k\mathcal{L}_{CD}(P^k,P')+\mathcal{L}_{PMD}
+\end{equation}
+$$
+其中，$P^k$和$P'$分别表示第$k$步的输出点云和目标点云。请注意，找到最优$\phi$的计算代价是非常高昂的。在实验中，我们遵循了[^48]的简化算法来估计$\phi$的逼近。
