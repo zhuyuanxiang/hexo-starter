@@ -197,3 +197,220 @@ $$
 
 人们可能会想知道，平面上均匀随机采样的二维点在重建点云时是否比二维栅格点表现得更好。从我们的实验来看，二维栅格点确实比随机点提供了更少的重建损失（补充部分8中的表6）。请注意，我们的基于图的最大池编码器可以看作是最大池化神经网络PointNet[41]的一个泛化版本。主要的区别是，编码器中的池化操作是在本地邻域中完成的，而不是在全局环境中完成的（见[第2.1节]()）。在[补充部分10]()中，就点坐标的随机扰动的稳健性而言，我们证明了基于图的编码器架构相比[第2.1.节]()中提及的没有图池化层的编码器要好。
 
+# Ch05 致谢
+
+这项工作得到了MERL的支持。作者要感谢匿名评论家李腾洋、张子明、余志定、陈世恒、田口裕一、迈克·琼斯和艾伦·沙利文的有益评论和建议。
+
+# Ch06 补充材料：定理3.1的证明
+
+使用$\mathbf{L}\in\mathbb{R}^{n\times12}$表示输入矩阵，$\theta$表示由编码器得到的码字，$\mathbf{P}\in\mathbb{R}^{n\times n}$表示转换矩阵。现在我们来证明当输入是$\mathbf{PL}$时，码字依然是$\theta$。
+
+编码器的第一部分是每个点的函数，如：3层感知器应用于输入矩阵$\mathbf{L}$的每一行，若函数是$f_1$，显而易见$f_1(\mathbf{PL})=\mathbf{P}f_1(\mathbf{L})$。第二部分计算等式(2)，则证明如下：
+$$
+\begin{equation}
+\mathbf{PY}=\mathbf{A}_{\max}(\mathbf{PX})\mathbf{K}
+\end{equation}
+$$
+因为$\mathbf{Y}=\mathbf{A}_{\max}(\mathbf{X})\mathbf{K}$，因此我们仅需要证明：
+$$
+\begin{equation}
+\mathbf{A}_{\max}(\mathbf{PX})=\mathbf{PA}_{\max}(\mathbf{X})
+\end{equation}
+$$
+假设置换矩阵$\mathbf{P}$使得$\mathbf{PX}$的第$i$行等于$\mathbf{x}_{\pi(i)}$，其中$\pi(\cdot)$是行序列集合$\{1,2,\ldots,n\}$上的置换函数，则从等式(3)中可得矩阵$\mathbf{A}_{\max}(\mathbf{PX})$的第$(i,j)$项为：
+$$
+\begin{equation}
+(\mathbf{A}_{\max}(\mathbf{PX}))_{ij}=\text{ReLU}(\max_{k\in\mathcal{N}(\pi(i))}x_{kj})
+\end{equation}
+$$
+与此同时，$\mathbf{A}_{\max}(\mathbf{PX})$的第$(\pi(i),j)$项为：
+$$
+\begin{equation}
+(\mathbf{A}_{\max}(\mathbf{PX}))_{\pi(i)j}=\text{ReLU}(\max_{k\in\mathcal{N}(\pi(i))}x_{kj})
+\end{equation}
+$$
+因为等式(6)与等式(7)的右手边是相同的，我们知道矩阵$\mathbf{A}_{\max}(\mathbf{PX})$可以通过将矩阵$\mathbf{A}_{\max}(\mathbf{X})$中的第$i$行置换到第$\pi(i)$行得到，即：$\mathbf{A}_{\max}(\mathbf{PX})=\mathbf{P}\mathbf{A}_{\max}(\mathbf{X})$。因此，我们证明了编码器的第二部分，输入中行的置换等价于输出中行的置换，即：等式(4)成立。
+
+因此，如果我们置换编码器的输入，那么图网络层的输出也被置换。然后，我们应用全局最大池化到图网络层的输出中。很明显，如果全局最大池化层的输入（或图网络层的输出）中行发生置换，那么网络输出的结果将保持不变。从而证明了定理3.1的结论。
+
+# Ch07 补充材料：定理3.2的证明
+
+我们通过显式地构造一个满足所述性质的2层感知器和一个码字向量$θ$，证明了基于存在性的定理3.2。
+
+该码字被简单地选择为点云矩阵$\mathbf{S}$的向量化形式，特别是，对于一个矩阵$\mathbf{S}\in\mathbb{R}^{m\times3}$，如果$\mathbf{S}=[s_{jk}],j=1,2,\ldots,m;k=1,2,3$，码字向量$\theta=[s_{11},s_{12},s_{13},s_{21},s_{22},s_{23},\ldots,s_{m1},s_{m2},s_{m3}]$，则拼接后的第$i$行是$\mathbf{v}_i=[x_i,y_i,s_{11},s_{12},s_{13},s_{21},s_{22},s_{23},\ldots,s_{m1},s_{m2},s_{m3}]$，其中$[x_i,y_i]$是第$i$个2D栅格点的坐标。假设2D栅格点的间距为$2\delta$，即：2D栅格点中任意两点的距离不小于$2\delta$。进一步假设这$m$个栅格点全都可以写作$[x_i,y_i]=[(2\beta_i+1)\delta,(2\gamma_i+1)\delta]$，其中$\beta_i$和$\gamma_i$是两个整数，它们的绝对值小于一个正常数$M$。一个$4\times4$集合的例子如下：
+$$
+\begin{equation}
+\begin{split}
+\{
+[-3\delta,-3\delta],[-3\delta,-1\delta],[-3\delta,1\delta],[-3\delta,3\delta],\\
+[-1\delta,-3\delta],[-1\delta,-1\delta],[-1\delta,1\delta],[-1\delta,3\delta],\\
+[+1\delta,-3\delta],[+1\delta,-1\delta],[+1\delta,1\delta],[+1\delta,3\delta],\\
+[+3\delta,-3\delta],[+3\delta,-1\delta],[+3\delta,1\delta],[+3\delta,3\delta]
+\}
+\end{split}
+\end{equation}
+$$
+在本例中，$M=4$，还假设输出点云位于以原点为中心的长度为2的三维的包围盒内，即$|s_{ij}|\leq1$。
+
+现在，我们构造一个两层感知机$f$，输入为行$\mathbf{v}_i$，输出为$f(\mathbf{v}_i)=[s_{i1},s_{i2},s_{i3}],i=1,2,\ldots,m$。输入层中的输入向量$\mathbf{v}_i$有$3m+2$个标量。隐藏层拥有$3m$个神经元。输出层输出三个标量$[s_{i1},s_{i2},s_{i3}]$。隐藏层中$3m$个神经元分为$m$个组，每组$3$个神经元。第$j$组中第$k$个神经元仅连接三个输入$x_i,y_i,[s_{j,k}]$，并计算这三个输入的线性组合：
+$$
+\begin{equation}
+\begin{split}
+\alpha_{j1}&=u^2x_j,\\
+\alpha_{j2}&=uy_j,\\
+\alpha_{j3}&=1
+\end{split}
+\end{equation}
+$$
+和偏差：
+$$
+\begin{equation}
+b=-u^2x^2_j-uy^2_j
+\end{equation}
+$$
+其中，$u$是后期指定的正常数。假定线性组合输出是$y_{j,k}$。线性组合紧接一个非线性激活函数：
+$$
+\begin{equation}
+z_{j,k}=
+\begin{cases}
+y_{j,k},&\text{如果}|y_{j,k}|\le c,\\
+0,&\text{如果}|y_{j,k}|\geq c,
+\end{cases}
+\end{equation}
+$$
+其中，$c$是后期指定的正常数。激活函数的输出被线性组合以产生最终的输出。在输出层有三个神经元，第$k$个神经元$(k=1,2,3)$计算公式：
+$$
+\begin{equation}
+w_k=\sum_{j=1}^m z_{j,k}
+\end{equation}
+$$
+我们假设参数$(\delta,u,c,M)$满足：
+$$
+\begin{align}
+u>0,c>0,\delta>0,M>0,\\
+u\delta^2>c+1,\\
+u>8M^2+4M+1,\\
+c>1.
+\end{align}
+$$
+现在我们证明了对于这个感知器，当感知器的输入为$\mathbf{v}_i$时，最终的输出$[w_1，w_2，w_3]$确实是$[s_{i1}，s_{i2}，s_{i3}]$。对于第$i$个输入$\mathbf{v}_i=[x_i,y_i,s_{11},s_{12},s_{13},s_{21},s_{22},s_{23}，\ldots,s_{m1},s_{m2},s_{m3}]$，隐藏层第$j$组的第$k$个神经元计算以下线性组合：
+$$
+\begin{equation}
+\begin{split}
+y_{j,k}
+&=\alpha_{j1}x_i+\alpha_{j2}y_i+\alpha_{j3}s_{j,k}+b\\
+&=u^2x_jx_i+uy_jy_i+s_{j,k}-u^2x^2_j-uy^2_j\\
+&=u^2x_j(x_i-x_j)+uy_j(y_i-y_j)+s_{j,k}
+\end{split}
+\end{equation}
+$$
+请注意，我们已经假定$[x_i,y_i]=[(2\beta_i+1)\delta,(2\gamma_i+1)\delta],\forall i$，因此可得：
+$$
+\begin{equation}
+\begin{split}
+y_{j,k}
+&=u^2x_j(x_i-x_j)+uy_j(y_i-y_j)+s_{j,k}\\
+&=2u^2\delta^2(2\beta_j+1)(\beta_i-\beta_j)+2u\delta^2(2\gamma_j+1)(\gamma_i-\gamma_j)+s_{j,k}\\
+&=u^2\delta^2m_1+u\delta^2m_2+s_{j,k}
+\end{split}
+\end{equation}
+$$
+其中，两个整数常量：$m_1=2(2\beta_j+1)(\beta_i-\beta_j),m_2=2(2\gamma_j+1)(\gamma_i-\gamma_j)$，当且仅当$x_i=x_j$时$m_1=0$，$y_i=y_j$时$m_2=0$。因为$\beta_i,\beta_j,\gamma_i,\gamma_j$的绝对值都比$M$小，可得：
+$$
+\begin{align}
+|m_1|\leq2|2\beta_j+1|\cdot|\beta_i-\beta_j|<2(2M+1)\cdot2M=8M^2+4M\\
+|m_2|\leq2|2\gamma_j+1|\cdot|\gamma_i-\gamma_j|<2(2M+1)\cdot2M=8M^2+4M
+\end{align}
+$$
+现在，考虑三种可能的案例：
+
+- $|m_1|\geq1$：
+
+$$
+\begin{equation}
+\begin{split}
+|y_{j,k}|
+&=|u^2\delta^2m_1+u\delta^2m_2+s_{j,k}|\\
+&>u^2\delta^2|m_1|=u\delta^2|m_2|-|s_{j,k}|\\
+&>u^2\delta^2-u\delta^2(8M^2+4M)-1\\
+&=u\delta^2[u-(8M^2+4M)]-1\\
+&>(c+1)\cdot1-1=c
+\end{split}
+\end{equation}
+$$
+
+最后一行依据假设等式(14)得到。
+
+- $m_1=0,|m_2|\geq1$：
+
+$$
+\begin{equation}
+\begin{split}
+|y_{j,k}|
+&=|u\delta^2m_2+s_{j,k}|\\
+&\geq u\delta^2|m_2|-|s_{j,k}|\\
+&\geq u\delta^2\\
+&\geq c+1>c
+\end{split}
+\end{equation}
+$$
+
+最后一行依据假设等式(15)得到。
+
+- $m_1=m_2=0$
+
+$$
+\begin{equation}
+|y_{j,k}|=|s_{j,k}|\leq1<c
+\end{equation}
+$$
+
+最后一步依据假设等式(16)得到。
+
+请注意，前面两个等式等价于$i\neq j$，最后一个等式等价于$i=j$。因此，由等式(11)得到：
+$$
+\begin{equation}
+z_{j,k}=
+\begin{cases}
+s_{j,k}, &\text{如果}j=i\\
+0,&\text{如果}j\neq i
+\end{cases}
+\end{equation}
+$$
+因此，由等式(12)得到：
+$$
+\begin{equation}
+w_k=\sum_{j=1}^m z_{j,k}=s_{i,k},\quad k=1,2,3
+\end{equation}
+$$
+这意味着输入是$\mathbf{v}_i$，输出就是$[s_{i,1},s_{i,2},s_{i,3}]$，证明结束。
+
+# Ch08 补充材料：解码器变形
+
+目前的解码器设计有两个连续的折叠操作，应用于一个二维栅格上。因此，人们可能会想，如果我们使用(1)更多的折叠操作或(2)在不同维度的规则栅格上使用相同数量的折叠操作，FoldingNet的性能是否能得到提高。在本节中，我们将报告这些不同设置的结果。实验设置与[第4.6节]()相同，实验结果如表6所示。从第1行和第2行可以看出，增加折叠操作的次数并不会显著提高性能。比较第1行和第3行，我们可以看到二维栅格在分类和重建方面都优于一维网格。从第1行和第4行可以看到3D栅格只带来微小的改进。正如我们在引言中讨论的，这是因为ShapeNet数据集和ModelNet数据集内的数据的内在维数是2，因为它们是从对象表面采样的。如果点云本质上是体积的，我们认为在解码器中使用三维栅格更合适。此外，我们还尝试在平面上通过均匀随机采样的方法生成固定栅格。然而，它还导致了更差的结果。我们认为这是随机采样引入的局部密度变化引起的。
+
+![image-20231201165355732](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%B8%89%E7%BB%B4%E5%A4%84%E7%90%86/%E7%82%B9%E4%BA%91/%E7%82%B9%E4%BA%91%E7%89%B9%E5%BE%81/FoldingNet/images/FoldingNet%20Point%20Cloud%20Auto-encoder%20via%20Deep%20Grid%20Deformation/image-20231201165355732.png)
+
+表6：不同FoldingNet解码器的比较。“Uniform”：栅格是均匀地随机采样；“Regular”：栅格基于固定距离规则采样。
+
+# Ch09 补充材料：通过解卷积实现折叠
+
+定义1中的折叠操作本质上是一个从二维栅格到三维曲面的逐点的二维到三维的函数。一个很自然的问题是，在相邻栅格点上的函数中引入显式的相关性是否有助于提高性能。我们注意到，有一个密切相关的工作，基于图像使用边信息重建三维点集[17]。[17]中的点重建网络利用反卷积来融合来自于图像所施加在规则栅格结构上的信息，这与本文思想相似。在这里，我们比较了一个反卷积网络与折叠网络的重建性能，详见表7。反卷积网络（C×H×W）的特征大小为$512\times1\times1$→$256\times3\times3$→$128\times5\times5$→$64\times15\times15$→$3\times45\times45$，核大小为$3,3,5,5$。我们推测反卷积超越了逐点操作，从而对重建曲面的光滑性施加了更强的约束。因此，它的重建效果更差（尽管具有相当的分类精度）。而在折叠网中使用的逐点MLP的栅格只施加了一个隐式约束，从而导致了更好的重构。
+
+![image-20231201170454870](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%B8%89%E7%BB%B4%E5%A4%84%E7%90%86/%E7%82%B9%E4%BA%91/%E7%82%B9%E4%BA%91%E7%89%B9%E5%BE%81/FoldingNet/images/FoldingNet%20Point%20Cloud%20Auto-encoder%20via%20Deep%20Grid%20Deformation/image-20231201170454870.png)
+
+表7：比较两种不同实现的折叠操作。
+
+# Ch10 补充材料：基于图的编码器的稳健性
+
+在这里，我们使用一个实验来表明，当数据受到随机噪声的影响时，图池化层对于保持FoldingNet的良好性能是有用的。下面的实验比较了FoldingNet和深度自动编码器，该自动编码器与基于折叠的解码器具有相同的架构，但是不同的编码器架构，在该自动编码器中基于图的最大池化层被删除。实验的设置与[第4.6节]()相同，只是ModelNet40数据集中每个点云中的$5\%$的点被随机移动到其他位置（但仍在原始点云的边界框内）。我们使用这些噪声数据来查看基于图的编码器和没有基于图的最大池化层的编码器的性能是如何降低的。结果报告如图6所示。我们可以看到，当噪声被注入到数据集中时，移除了图的最大池化层的模型性能退化大约$2\%$，而FoldingNet的分类精度变化不大（与[第4.6节]()中的图5相比）。由此可以看出，基于图的编码器可以使得FoldingNet更加稳健。
+
+![image-20231201171250561](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%B8%89%E7%BB%B4%E5%A4%84%E7%90%86/%E7%82%B9%E4%BA%91/%E7%82%B9%E4%BA%91%E7%89%B9%E5%BE%81/FoldingNet/images/FoldingNet%20Point%20Cloud%20Auto-encoder%20via%20Deep%20Grid%20Deformation/image-20231201171250561.png)
+
+图6：比较第2.1节中基于图的编码器和移除了基于图的最大池化层的编码器。未基于图的编码器与[^41]中提出的相似，只是[^41]中目标是有监督学习。
+
+# Ch11 补充材料：ModelNet10上线性SVM实验的更多细节
+
+[第4.4节]()对MN10数据集的分类准确率为$94.4\%$。我们在[第4.5节]()中指出，许多被错误分类的数据对对于人类也很难区分。在表中，我们列出了所有不正确分类的模型及其点云表示。像“table→desk”这样的短语是指点云带有“table”的标签，但它被线性SVM错误地归类为“desk”。
+
+![image-20231201173234332](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%B8%89%E7%BB%B4%E5%A4%84%E7%90%86/%E7%82%B9%E4%BA%91/%E7%82%B9%E4%BA%91%E7%89%B9%E5%BE%81/FoldingNet/images/FoldingNet%20Point%20Cloud%20Auto-encoder%20via%20Deep%20Grid%20Deformation/image-20231201173234332.png)
