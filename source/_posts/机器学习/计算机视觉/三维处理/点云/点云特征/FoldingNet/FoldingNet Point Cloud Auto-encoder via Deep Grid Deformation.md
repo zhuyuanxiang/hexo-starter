@@ -21,7 +21,7 @@ Yang Y, Feng C, Shen Y, et al.  Foldingnet: Point cloud auto-encoder via deep gr
 
 [原始论文](https://arxiv.org/pdf/1712.07262v2.pdf)
 
-[中文翻译](https://zhuyuanxiang.github.io/pdfs/机器学习/计算机视觉/三维处理/点云/FoldingNet/FoldingNet：通过深度栅格变形技术实现的点云自动编码器.pdf)
+[中文翻译](pdfs/机器学习/计算机视觉/三维处理/点云/点云特征/FoldingNet/FoldingNet%20Point%20Cloud%20Auto-encoder%20via%20Deep%20Grid%20Deformation.pdf)
 
 [原始代码_PyTorch](https://github.com/AnTao97/UnsupervisedPointCloudReconstruction)
 
