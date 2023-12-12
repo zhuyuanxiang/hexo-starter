@@ -22,7 +22,7 @@ Shen Y, Feng C, Yang Y, et al. Mining point cloud local structures by kernel cor
 
 [原始论文](https://openaccess.thecvf.com/content_cvpr_2018/papers/Shen_Mining_Point_Cloud_CVPR_2018_paper.pdf)
 
-[中文翻译]()
+[中文翻译](pdfs/机器学习/计算机视觉/三维处理/点云/点云特征/FoldingNet/Mining%20point%20cloud%20local%20structures%20by%20kernel%20correlation%20and%20graph%20pooling.pdf)
 
 [原始代码_PyTorch](https://github.com/ftdlyc/KCNet_Pytorch)
 
